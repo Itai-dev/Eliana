@@ -232,9 +232,9 @@ html[dir="rtl"] .press-list { animation-name: marquee-rtl; }
 .section--white { background: var(--white); }
 
 /* Statement */
-.statement--photo .wrap { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+.statement--photo .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
 .statement-photo { margin: 0; }
-.statement-photo img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--r-lg); }
+.statement-photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-lg); }
 .statement blockquote { margin: 0; }
 .statement p { font-size: clamp(28px, 3.4vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 html[lang="he"] .statement p { letter-spacing: 0; line-height: 1.2; }
@@ -242,7 +242,7 @@ html[lang="he"] .statement p { letter-spacing: 0; line-height: 1.2; }
 .statement cite { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-top: 30px; font-style: normal; font-size: 16px; color: var(--muted-on-dark); }
 .statement cite strong { color: var(--white); font-weight: 700; }
 .quote-mark { font-size: 90px; font-weight: 700; line-height: 0.6; color: var(--sky); display: block; height: 44px; }
-@media (max-width: 860px) { .statement--photo .wrap { grid-template-columns: 1fr; } .statement-photo { max-width: 480px; } }
+@media (max-width: 860px) { .statement--photo .wrap { grid-template-columns: 1fr; } .statement-photo { max-width: 620px; } }
 
 /* Facts */
 .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -344,6 +344,9 @@ html[dir="rtl"] .fact-num { direction: ltr; text-align: right; }
 
 /* ---------- Speaking ---------- */
 .speaking-top { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 6vw, 90px); align-items: end; margin-bottom: clamp(48px, 6vw, 80px); }
+.speaking-photo { margin: 0 0 16px; }
+.speaking-photo img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; object-position: 60% 12%; border-radius: var(--r-lg); }
+@media (max-width: 860px) { .speaking-photo img { aspect-ratio: 4 / 3; object-position: 64% 40%; border-radius: var(--r-md); } }
 .topics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .topic { background: var(--card-dark); border-radius: var(--r-lg); padding: clamp(28px, 3.4vw, 44px); display: flex; flex-direction: column; transition: background 0.4s var(--ease), transform 0.4s var(--ease); }
 .topic:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-4px); }
