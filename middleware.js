@@ -109,12 +109,12 @@ function loginPage(next, failed) {
   <main class="card">
     <div class="mark">ES</div>
     <h1>אליענה <span>זקס</span></h1>
-    <p>האתר עדיין פרטי. הזינו סיסמה כדי להיכנס.<span class="en">This site is private. Enter the password to continue.</span></p>
+    <p>האתר עדיין פרטי. הזינו סיסמה כדי להיכנס.<span class="en">This site is private. Enter the password to continue.</span><span class="en">Сайт пока закрыт. Введите пароль.</span></p>
     <form method="post" action="${LOGIN_PATH}">
-      <input type="password" name="password" placeholder="סיסמה · Password" autocomplete="current-password" autofocus required>
+      <input type="password" name="password" placeholder="סיסמה · Password · Пароль" autocomplete="current-password" autofocus required>
       <input type="hidden" name="next" value="${esc(next)}">
-      <button type="submit">כניסה · Enter</button>
-      ${failed ? '<p class="err">הסיסמה שגויה · Wrong password</p>' : ''}
+      <button type="submit">כניסה · Enter · Войти</button>
+      ${failed ? '<p class="err">הסיסמה שגויה · Wrong password · Неверный пароль</p>' : ''}
     </form>
   </main>
 </body>

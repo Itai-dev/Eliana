@@ -1,6 +1,6 @@
 # elianasachs.com
 
-Official website of Eliana Sachs (אליענה זקס). Plain HTML/CSS/JS — no build step. Bilingual: English and Hebrew (RTL), with a toggle in the header. Hebrew loads automatically for visitors whose browser is set to Hebrew; `?lang=he` / `?lang=en` force a language.
+Official website of Eliana Sachs (אליענה זקס). Plain HTML/CSS/JS — no build step. Hebrew (default, RTL), English and Russian, switched from the globe menu in the header; `?lang=he|en|ru` forces a language.
 
 ## Before launch
 
@@ -18,7 +18,7 @@ Any static host works. Easiest options:
 
 ## Editing content
 
-- Text lives in `index.html`; every line exists twice (`data-l="en"` and `data-l="he"`).
+- Text lives in `index.html`; every line exists three times (`data-l="he"`, `data-l="en"`, `data-l="ru"`).
 - Press links live in the `MEDIA` list at the top of `assets/js/main.js` — add new coverage there.
 - After the election, update the "Sep–Oct 2026" and "Next" timeline entries and the "No. 38" fact as needed.
 
