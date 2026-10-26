@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr" class="no-js">
+<html lang="he" dir="rtl" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -9,6 +9,7 @@
   <link rel="canonical" href="https://elianasachs.com/">
   <link rel="alternate" hreflang="en" href="https://elianasachs.com/?lang=en">
   <link rel="alternate" hreflang="he" href="https://elianasachs.com/?lang=he">
+  <link rel="alternate" hreflang="ru" href="https://elianasachs.com/?lang=ru">
   <link rel="alternate" hreflang="x-default" href="https://elianasachs.com/">
 
   <meta property="og:type" content="website">
@@ -21,6 +22,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="he_IL">
+  <meta property="og:locale:alternate" content="ru_RU">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -35,13 +37,13 @@
     // Pick the language before first paint to avoid a flash of the wrong language.
     (function () {
       document.documentElement.classList.remove('no-js');
-      var lang = 'en';
+      var lang = 'he';
       try {
         var q = new URLSearchParams(location.search).get('lang');
         var saved = localStorage.getItem('es-lang');
-        if (q === 'he' || q === 'en') lang = q;
-        else if (saved === 'he' || saved === 'en') lang = saved;
-        else if ((navigator.language || '').toLowerCase().indexOf('he') === 0) lang = 'he';
+        var ok = { he: 1, en: 1, ru: 1 };
+        if (ok[q]) lang = q;
+        else if (ok[saved]) lang = saved;
       } catch (e) {}
       document.documentElement.lang = lang;
       document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
@@ -63,12 +65,12 @@
     "founder": { "@type": "Organization", "name": "Dor Yashar!", "alternateName": "דור ישר!", "url": "https://yasharwitheisenkot.com/doryashar/" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Ben-Gurion University of the Negev" },
     "knowsLanguage": ["he", "en"],
-    "sameAs": ["https://www.linkedin.com/in/eliana-sachs-1868572a1/"]
+    "sameAs": ["https://www.instagram.com/eliana.sachs/", "https://www.tiktok.com/@eliana.za", "https://www.linkedin.com/in/eliana-sachs-1868572a1/"]
   }
   </script>
 </head>
 <body>
-  <a class="skip" href="#main"><span data-l="en">Skip to content</span><span data-l="he">דלג לתוכן</span></a>
+  <a class="skip" href="#main"><span data-l="en">Skip to content</span><span data-l="he">דלג לתוכן</span><span data-l="ru">Перейти к содержимому</span></a>
 
   <!-- Monogram used for the logo and as a photo placeholder -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -83,20 +85,27 @@
     <div class="wrap">
       <a class="brand" href="#top" aria-label="Eliana Sachs">
         <svg class="brand-mark"><use href="#monogram"/></svg>
-        <span class="brand-name"><span data-l="en">Eliana Sachs</span><span data-l="he">אליענה זקס</span></span>
+        <span class="brand-name"><span data-l="en">Eliana Sachs</span><span data-l="he">אליענה זקס</span><span data-l="ru">Элиана Закс</span></span>
       </a>
       <div class="header-tools">
         <nav class="nav" id="nav" aria-label="Main">
-          <a href="#story"><span data-l="en">Story</span><span data-l="he">הסיפור</span></a>
-          <a href="#work"><span data-l="en">Work</span><span data-l="he">עשייה</span></a>
-          <a href="#speaking"><span data-l="en">Speaking</span><span data-l="he">הרצאות</span></a>
-          <a href="#media"><span data-l="en">Media</span><span data-l="he">תקשורת</span></a>
-          <a href="#contact"><span data-l="en">Contact</span><span data-l="he">צור קשר</span></a>
-          <a class="btn" href="#contact" data-inquiry="lecture"><span data-l="en">Book a lecture</span><span data-l="he">להזמנת הרצאה</span></a>
+          <a href="#story"><span data-l="en">Story</span><span data-l="he">הסיפור</span><span data-l="ru">История</span></a>
+          <a href="#work"><span data-l="en">Work</span><span data-l="he">עשייה</span><span data-l="ru">Деятельность</span></a>
+          <a href="#speaking"><span data-l="en">Speaking</span><span data-l="he">הרצאות</span><span data-l="ru">Лекции</span></a>
+          <a href="#media"><span data-l="en">Media</span><span data-l="he">תקשורת</span><span data-l="ru">СМИ</span></a>
+          <a href="#contact"><span data-l="en">Contact</span><span data-l="he">צור קשר</span><span data-l="ru">Контакты</span></a>
+          <a class="btn" href="#contact" data-inquiry="lecture"><span data-l="en">Book a lecture</span><span data-l="he">להזמנת הרצאה</span><span data-l="ru">Заказать лекцию</span></a>
         </nav>
-        <div class="lang" role="group" aria-label="Language">
-          <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-set-lang="he" aria-pressed="false">עב</button>
+        <div class="lang-menu">
+          <button class="lang-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Language / שפה / Язык">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"/></svg>
+            <span class="lang-current">עב</span>
+          </button>
+          <ul class="lang-list" role="menu">
+            <li role="none"><button type="button" role="menuitemradio" data-set-lang="he" lang="he">עברית</button></li>
+            <li role="none"><button type="button" role="menuitemradio" data-set-lang="en" lang="en">English</button></li>
+            <li role="none"><button type="button" role="menuitemradio" data-set-lang="ru" lang="ru">Русский</button></li>
+          </ul>
         </div>
         <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
@@ -112,25 +121,27 @@
       </div>
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow reveal"><span data-l="en">Speaker · Public Leader</span><span data-l="he">מרצה · מנהיגה ציבורית</span></p>
+          <p class="eyebrow reveal"><span data-l="en">Speaker · Public Leader</span><span data-l="he">מרצה · מנהיגה ציבורית</span><span data-l="ru">Спикер · Общественный лидер</span></p>
           <h1 class="reveal reveal-d1">
             <span data-l="en">Eliana<br><em>Sachs</em></span>
             <span data-l="he">אליענה<br><em>זקס</em></span>
+            <span data-l="ru">Элиана<br><em>Закс</em></span>
           </h1>
           <p class="hero-tagline reveal reveal-d2">
             <span data-l="en">Leadership for a new generation.</span>
             <span data-l="he">מנהיגות של דור חדש.</span>
+            <span data-l="ru">Лидерство нового поколения.</span>
           </p>
-          <p class="hero-alt reveal reveal-d2"><span data-l="en" lang="he" dir="rtl">אליענה זקס</span><span data-l="he" lang="en" dir="ltr">Eliana Sachs</span></p>
+          <p class="hero-alt reveal reveal-d2"><span data-l="en" lang="he" dir="rtl">אליענה זקס</span><span data-l="he" lang="en" dir="ltr">Eliana Sachs</span><span data-l="ru" lang="en" dir="ltr">Eliana Sachs</span></p>
           <div class="hero-cta reveal reveal-d3">
-            <a class="btn btn--light" href="#contact" data-inquiry="lecture"><span data-l="en">Book Eliana to speak</span><span data-l="he">הזמינו את אליענה להרצות</span> <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn btn--outline-light" href="#story"><span data-l="en">Read her story</span><span data-l="he">לסיפור שלה</span></a>
+            <a class="btn btn--light" href="#contact" data-inquiry="lecture"><span data-l="en">Book Eliana to speak</span><span data-l="he">הזמינו את אליענה להרצות</span><span data-l="ru">Пригласить Элиану выступить</span> <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--outline-light" href="#story"><span data-l="en">Read her story</span><span data-l="he">לסיפור שלה</span><span data-l="ru">Читать её историю</span></a>
           </div>
           <ul class="hero-roles reveal reveal-d3">
-            <li><span data-l="en">Head of Youth HQ, Yashar!</span><span data-l="he">ראש מטה הצעירים, ישר!</span></li>
-            <li><span data-l="en">Chair, Dor Yashar!</span><span data-l="he">יו"ר דור ישר!</span></li>
-            <li><span data-l="en">Tech &amp; Marketing</span><span data-l="he">הייטק ושיווק</span></li>
-            <li><span data-l="en">Model</span><span data-l="he">דוגמנית</span></li>
+            <li><span data-l="en">Head of Youth HQ, Yashar!</span><span data-l="he">ראש מטה הצעירים, ישר!</span><span data-l="ru">Глава молодёжного штаба «Яшар!»</span></li>
+            <li><span data-l="en">Chair, Dor Yashar!</span><span data-l="he">יו"ר דור ישר!</span><span data-l="ru">Председатель «Дор Яшар!»</span></li>
+            <li><span data-l="en">Tech &amp; Marketing</span><span data-l="he">הייטק ושיווק</span><span data-l="ru">Технологии и маркетинг</span></li>
+            <li><span data-l="en">Model</span><span data-l="he">דוגמנית</span><span data-l="ru">Модель</span></li>
           </ul>
         </div>
       </div>
@@ -139,7 +150,7 @@
     <!-- ============ PRESS STRIP ============ -->
     <div class="press" aria-label="As featured in">
       <div class="wrap">
-        <span class="press-label"><span data-l="en">As featured in</span><span data-l="he">הופיעה ב־</span></span>
+        <span class="press-label"><span data-l="en">As featured in</span><span data-l="he">הופיעה ב־</span><span data-l="ru">О ней писали</span></span>
         <div class="press-track">
           <ul class="press-list">
             <li>Ynet<i>✦</i></li><li>Yedioth Ahronoth<i>✦</i></li><li>Channel 12 News<i>✦</i></li><li>Israel Hayom<i>✦</i></li><li>Maariv<i>✦</i></li><li>Walla!<i>✦</i></li><li>The Jerusalem Post<i>✦</i></li><li>JNS<i>✦</i></li><li>Davar<i>✦</i></li><li>Fashion Gone Rogue<i>✦</i></li>
@@ -160,10 +171,11 @@
           <p>
             <span data-l="en">Eliana is the Israel of today — <em>determined, principled</em>, and the right blend of action and spirit.</span>
             <span data-l="he">אליענה היא ישראל של היום — <em>נחושה, ערכית</em> וחיבור נכון של עשייה ורוח.</span>
+            <span data-l="ru">Элиана — это сегодняшний Израиль: <em>решительная, принципиальная</em>, верное сочетание дела и духа.</span>
           </p>
           <cite>
-            <strong><span data-l="en">Gadi Eisenkot</span><span data-l="he">גדי איזנקוט</span></strong> ·
-            <span data-l="en">Former IDF Chief of Staff, Chairman of Yashar!</span><span data-l="he">הרמטכ"ל לשעבר, יו"ר ישר!</span>
+            <strong><span data-l="en">Gadi Eisenkot</span><span data-l="he">גדי איזנקוט</span><span data-l="ru">Гади Айзенкот</span></strong> ·
+            <span data-l="en">Former IDF Chief of Staff, Chairman of Yashar!</span><span data-l="he">הרמטכ"ל לשעבר, יו"ר ישר!</span><span data-l="ru">Бывший начальник Генштаба ЦАХАЛ, председатель «Яшар!»</span>
           </cite>
         </blockquote>
       </div>
@@ -174,10 +186,11 @@
       <div class="wrap">
         <div class="story-grid">
           <aside class="story-aside">
-            <p class="eyebrow reveal"><span data-l="en">Her Story</span><span data-l="he">הסיפור שלה</span></p>
+            <p class="eyebrow reveal"><span data-l="en">Her Story</span><span data-l="he">הסיפור שלה</span><span data-l="ru">Её история</span></p>
             <h2 class="reveal reveal-d1">
               <span data-l="en">Half her family was taken in a moment. She chose to rise.</span>
               <span data-l="he">חצי ממשפחתה נלקחה ברגע אחד. היא בחרה לקום.</span>
+              <span data-l="ru">В одно мгновение она потеряла половину семьи. И решила подняться.</span>
             </h2>
             <div class="story-img reveal reveal-d2" data-photo>
               <div class="img-fallback"><svg width="120" height="120"><use href="#monogram"/></svg></div>
@@ -204,6 +217,15 @@
               <p class="reveal">בפברואר 2026 פגע טיל שוב — הפעם ליד דירתה שלה בתל אביב. כשהדלת נחסמה מעוצמת הפיצוץ, היא נמלטה דרך החלון — ודקות אחר כך כבר רצה למקלט יחד עם עולה חדשה ומבוהלת, שהייתה בארץ יומיים בלבד. התשובה שלה הייתה זהה: <em>"קורבן הוא מי שעושה מעצמו קורבן. אפשר לבחור לקום ולהמשיך קדימה."</em></p>
               <p class="reveal">ביולי 2026 ביקש ממנה גדי איזנקוט לעמוד בראש מטה הצעירים של ישר!. מאז היא הפכה לאחד הקולות הצעירים הבולטים בשיח הציבורי בישראל: בונה קהילת מנהיגות צעירה ארצית, עומדת לצד אחים ואחיות שכולים ויתומים, ומדברת בגלוי על חוסן נפשי — הוכחה, כדבריה, "שהילדה הקטנה מבאר שבע יכולה לעשות משהו טוב."</p>
             </div>
+            <div data-l="ru">
+              <p class="reveal">Элиана Закс родилась в июне 2001 года в медицинском центре «Сорока» в Беэр-Шеве, в семье репатриантов из бывшего Советского Союза. Одарённая ученица, она ещё в школе получила степень бакалавра химии в Университете Бен-Гуриона. Подростком, по совету мамы, она впервые встала перед камерой — так началась карьера модели, которая привела её в кампании ведущих израильских модных брендов.</p>
+              <p class="reveal">В восемнадцать лет она переехала в Тель-Авив, чтобы проходить гражданскую службу помощником юриста в Государственной прокуратуре, — параллельно работая на двух работах и строя карьеру в моде. Затем были реклама в McCann, digital-маркетинг в Isrotel и развитие бизнеса в технологической компании Natural Intelligence, работающей на основе ИИ.</p>
+              <p class="reveal">Утром 24 июня 2025 года — всего за несколько часов до прекращения огня, завершившего двенадцатидневную войну с Ираном, — баллистическая ракета попала в дом семьи в Беэр-Шеве. Погибли мама Элианы, Михаль, и её младший брат Эйтан, солдат, а вместе с ними девушка Эйтана Ноа Богуславски и их соседка Наоми Шаанан. Отец, Игорь, был ранен и выжил.</p>
+              <blockquote class="pull reveal">«После того как я потеряла маму и брата, я поняла, что у нас нет привилегии стоять в стороне».</blockquote>
+              <p class="reveal">То, что Элиана сделала потом, — сердце её истории. Она составила два списка: двадцать желаний, которые исполнит в память о семье, и двадцать качеств — десять от мамы и десять от брата, — которые возьмёт с собой в новую себя. Через четыре месяца она стала лицом кампании Factory 54 — магазина, который так любила её мама. А несколько дней спустя вышла на подиум Недели моды в Тель-Авиве в комбинезоне, сшитом по меркам Эйтана, — последней модели, которую он показывал.</p>
+              <p class="reveal">В феврале 2026 года ракета ударила снова — на этот раз рядом с её собственной квартирой в Тель-Авиве. Взрывом заклинило дверь, и она выбралась через окно, а уже через несколько минут вела в убежище испуганную репатриантку, которая была в стране всего два дня. Её ответ был прежним: <em>«Жертва — это тот, кто сам делает себя жертвой. Можно выбрать — подняться и идти дальше».</em></p>
+              <p class="reveal">В июле 2026 года Гади Айзенкот предложил ей возглавить молодёжный штаб «Яшар!». С тех пор она стала одним из самых узнаваемых молодых голосов в общественной жизни Израиля: создаёт общенациональное сообщество молодых лидеров, поддерживает осиротевших братьев, сестёр и сирот и открыто говорит о психологической устойчивости — доказательство, по её словам, «что маленькая девочка из Беэр-Шевы может сделать что-то хорошее».</p>
+            </div>
           </div>
         </div>
 
@@ -211,24 +233,25 @@
         <div class="memorial reveal" aria-label="In memory">
           <div class="memorial-head">
             <svg class="candle" viewBox="0 0 28 40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M14 2c3 4 4 6 4 8.5A4 4 0 0 1 14 14.5a4 4 0 0 1-4-4C10 8 11 6 14 2Z"/><rect x="8" y="18" width="12" height="20" rx="1"/></svg>
-            <h3><span data-l="en">In loving memory</span><span data-l="he">לזכרם</span></h3>
-            <p><span data-l="en">"As long as we remember them, they live."</span><span data-l="he">"כל עוד זוכרים אותם — הם חיים."</span></p>
+            <h3><span data-l="en">In loving memory</span><span data-l="he">לזכרם</span><span data-l="ru">Светлая память</span></h3>
+            <p><span data-l="en">"As long as we remember them, they live."</span><span data-l="he">"כל עוד זוכרים אותם — הם חיים."</span><span data-l="ru">«Пока мы их помним — они живы».</span></p>
           </div>
           <div class="memorial-person">
             <img class="memorial-photo" src="assets/img/michal.webp" alt="Michal Sachs" width="480" height="480" loading="lazy">
-            <h4><span data-l="en">Michal Sachs</span><span data-l="he">מיכל זקס ז"ל</span></h4>
-            <p class="rel"><span data-l="en">Mother · 50</span><span data-l="he">אמא · בת 50</span></p>
-            <p><span data-l="en">A business owner, a cancer survivor, and a volunteer who spent her free time packing food parcels for soldiers. The one who first believed Eliana belonged in front of the camera.</span><span data-l="he">בעלת עסק, מחלימה מסרטן ומתנדבת שהקדישה את זמנה הפנוי לאריזת חבילות מזון לחיילים. זו שהאמינה ראשונה שמקומה של אליענה מול המצלמה.</span></p>
+            <h4><span data-l="en">Michal Sachs</span><span data-l="he">מיכל זקס ז"ל</span><span data-l="ru">Михаль Закс</span></h4>
+            <p class="rel"><span data-l="en">Mother · 50</span><span data-l="he">אמא · בת 50</span><span data-l="ru">Мама · 50 лет</span></p>
+            <p><span data-l="en">A business owner, a cancer survivor, and a volunteer who spent her free time packing food parcels for soldiers. The one who first believed Eliana belonged in front of the camera.</span><span data-l="he">בעלת עסק, מחלימה מסרטן ומתנדבת שהקדישה את זמנה הפנוי לאריזת חבילות מזון לחיילים. זו שהאמינה ראשונה שמקומה של אליענה מול המצלמה.</span><span data-l="ru">Владелица своего бизнеса, победившая рак, волонтёр, которая в свободное время собирала продуктовые посылки для солдат. Именно она первой поверила, что Элиане место перед камерой.</span></p>
           </div>
           <div class="memorial-person">
             <img class="memorial-photo" src="assets/img/eitan.webp" alt="Cpl. Eitan Sachs" width="480" height="480" loading="lazy">
-            <h4><span data-l="en">Cpl. Eitan Sachs</span><span data-l="he">רב"ט איתן זקס ז"ל</span></h4>
-            <p class="rel"><span data-l="en">Brother · 18</span><span data-l="he">אח · בן 18</span></p>
-            <p><span data-l="en">A soldier in training with the IDF's Multidimensional Unit and a familiar face on the runways of Shenkar's fashion department. Eliana hopes young people his age will learn from him a love of this country — despite everything.</span><span data-l="he">חייל במסלול היחידה הרב־ממדית ופנים מוכרות על מסלולי התצוגה של המחלקה לעיצוב אופנה בשנקר. אליענה מקווה שבני גילו ילמדו ממנו אהבת הארץ — למרות הכול.</span></p>
+            <h4><span data-l="en">Cpl. Eitan Sachs</span><span data-l="he">רב"ט איתן זקס ז"ל</span><span data-l="ru">Капрал Эйтан Закс</span></h4>
+            <p class="rel"><span data-l="en">Brother · 18</span><span data-l="he">אח · בן 18</span><span data-l="ru">Брат · 18 лет</span></p>
+            <p><span data-l="en">A soldier in training with the IDF's Multidimensional Unit and a familiar face on the runways of Shenkar's fashion department. Eliana hopes young people his age will learn from him a love of this country — despite everything.</span><span data-l="he">חייל במסלול היחידה הרב־ממדית ופנים מוכרות על מסלולי התצוגה של המחלקה לעיצוב אופנה בשנקר. אליענה מקווה שבני גילו ילמדו ממנו אהבת הארץ — למרות הכול.</span><span data-l="ru">Солдат, проходивший подготовку в Многопрофильном подразделении ЦАХАЛ, и знакомое лицо на показах факультета дизайна моды Шенкар. Элиана надеется, что его сверстники научатся у него любви к этой стране — несмотря ни на что.</span></p>
           </div>
           <div class="memorial-foot">
             <span data-l="en">Also remembered: Noa Boguslavsky, 18, and Naomi Shaanan, 73, killed in the same strike.</span>
             <span data-l="he">נזכור גם את נועה בוגוסלבסקי ז"ל, בת 18, ואת נעמי שאנן ז"ל, בת 73, שנהרגו באותה פגיעה.</span>
+            <span data-l="ru">Мы также помним Ноа Богуславски, 18 лет, и Наоми Шаанан, 73 года, погибших при том же ударе.</span>
           </div>
         </div>
       </div>
@@ -240,19 +263,19 @@
         <div class="facts">
           <div class="fact reveal">
             <div class="fact-num">B.Sc.</div>
-            <p><span data-l="en">in Chemistry from Ben-Gurion University — earned while still in high school</span><span data-l="he">בכימיה מאוניברסיטת בן־גוריון — עוד בזמן התיכון</span></p>
+            <p><span data-l="en">in Chemistry from Ben-Gurion University — earned while still in high school</span><span data-l="he">בכימיה מאוניברסיטת בן־גוריון — עוד בזמן התיכון</span><span data-l="ru">по химии в Университете Бен-Гуриона — ещё в школьные годы</span></p>
           </div>
           <div class="fact reveal reveal-d1">
             <div class="fact-num">5</div>
-            <p><span data-l="en">worlds she moves between: politics, technology, advertising, fashion and public service</span><span data-l="he">עולמות שהיא נעה ביניהם: פוליטיקה, הייטק, פרסום, אופנה ושירות ציבורי</span></p>
+            <p><span data-l="en">worlds she moves between: politics, technology, advertising, fashion and public service</span><span data-l="he">עולמות שהיא נעה ביניהם: פוליטיקה, הייטק, פרסום, אופנה ושירות ציבורי</span><span data-l="ru">сфер, в которых она работает: политика, технологии, реклама, мода и госслужба</span></p>
           </div>
           <div class="fact reveal reveal-d2">
             <div class="fact-num"><small>No.</small> 38</div>
-            <p><span data-l="en">on the Yashar! Knesset list in the 2026 general election</span><span data-l="he">ברשימת ישר! לכנסת בבחירות 2026</span></p>
+            <p><span data-l="en">on the Yashar! Knesset list in the 2026 general election</span><span data-l="he">ברשימת ישר! לכנסת בבחירות 2026</span><span data-l="ru">в списке «Яшар!» на выборах в Кнессет 2026 года</span></p>
           </div>
           <div class="fact reveal reveal-d3">
             <div class="fact-num">1<small>st</small></div>
-            <p><span data-l="en">party youth platform of the 2026 election, launched by the HQ she leads</span><span data-l="he">תוכנית צעירים ייעודית בבחירות 2026 — של המטה שבראשו היא עומדת</span></p>
+            <p><span data-l="en">party youth platform of the 2026 election, launched by the HQ she leads</span><span data-l="he">תוכנית צעירים ייעודית בבחירות 2026 — של המטה שבראשו היא עומדת</span><span data-l="ru">молодёжная программа партии на выборах 2026 года — от штаба, который она возглавляет</span></p>
           </div>
         </div>
       </div>
@@ -262,78 +285,78 @@
     <section class="section section--dark" id="journey">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow reveal"><span data-l="en">The Journey</span><span data-l="he">המסע</span></p>
-          <h2 class="reveal reveal-d1"><span data-l="en">Milestones</span><span data-l="he">ציוני דרך</span></h2>
+          <p class="eyebrow reveal"><span data-l="en">The Journey</span><span data-l="he">המסע</span><span data-l="ru">Путь</span></p>
+          <h2 class="reveal reveal-d1"><span data-l="en">Milestones</span><span data-l="he">ציוני דרך</span><span data-l="ru">Вехи</span></h2>
         </div>
         <ol class="timeline">
           <li class="tl-item reveal">
             <div class="tl-date">2001</div>
             <div class="tl-content">
-              <h3><span data-l="en">Born in Be'er Sheva</span><span data-l="he">נולדה בבאר שבע</span></h3>
-              <p><span data-l="en">The daughter of Michal and Igor, immigrants from the former Soviet Union, and big sister to Eitan.</span><span data-l="he">בתם של מיכל ואיגור, עולים מברית המועצות לשעבר, ואחות גדולה לאיתן.</span></p>
+              <h3><span data-l="en">Born in Be'er Sheva</span><span data-l="he">נולדה בבאר שבע</span><span data-l="ru">Родилась в Беэр-Шеве</span></h3>
+              <p><span data-l="en">The daughter of Michal and Igor, immigrants from the former Soviet Union, and big sister to Eitan.</span><span data-l="he">בתם של מיכל ואיגור, עולים מברית המועצות לשעבר, ואחות גדולה לאיתן.</span><span data-l="ru">Дочь Михаль и Игоря, репатриантов из бывшего СССР, и старшая сестра Эйтана.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
-            <div class="tl-date"><span data-l="en">High school</span><span data-l="he">התיכון</span></div>
+            <div class="tl-date"><span data-l="en">High school</span><span data-l="he">התיכון</span><span data-l="ru">Школа</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">A degree before graduation — and a first campaign</span><span data-l="he">תואר לפני הבגרות — וקמפיין ראשון</span></h3>
-              <p><span data-l="en">Completes a B.Sc. in Chemistry at Ben-Gurion University through a gifted program, and begins modeling at her mother's encouragement.</span><span data-l="he">משלימה תואר ראשון בכימיה באוניברסיטת בן־גוריון במסגרת תוכנית למחוננים, ומתחילה לדגמן בעידודה של אמה.</span></p>
+              <h3><span data-l="en">A degree before graduation — and a first campaign</span><span data-l="he">תואר לפני הבגרות — וקמפיין ראשון</span><span data-l="ru">Диплом раньше аттестата — и первая кампания</span></h3>
+              <p><span data-l="en">Completes a B.Sc. in Chemistry at Ben-Gurion University through a gifted program, and begins modeling at her mother's encouragement.</span><span data-l="he">משלימה תואר ראשון בכימיה באוניברסיטת בן־גוריון במסגרת תוכנית למחוננים, ומתחילה לדגמן בעידודה של אמה.</span><span data-l="ru">Получает степень бакалавра химии в Университете Бен-Гуриона по программе для одарённых и по совету мамы начинает работать моделью.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
             <div class="tl-date">2019</div>
             <div class="tl-content">
-              <h3><span data-l="en">Tel Aviv &amp; public service</span><span data-l="he">תל אביב ושירות ציבורי</span></h3>
-              <p><span data-l="en">Moves to Tel Aviv for national service as a paralegal at the State Attorney's Office — where her belief in justice and public service takes shape.</span><span data-l="he">עוברת לתל אביב לשירות לאומי כפרליגלית בפרקליטות המדינה — שם מתגבשת אמונתה בצדק ובשירות הציבור.</span></p>
+              <h3><span data-l="en">Tel Aviv &amp; public service</span><span data-l="he">תל אביב ושירות ציבורי</span><span data-l="ru">Тель-Авив и служение обществу</span></h3>
+              <p><span data-l="en">Moves to Tel Aviv for national service as a paralegal at the State Attorney's Office — where her belief in justice and public service takes shape.</span><span data-l="he">עוברת לתל אביב לשירות לאומי כפרליגלית בפרקליטות המדינה — שם מתגבשת אמונתה בצדק ובשירות הציבור.</span><span data-l="ru">Переезжает в Тель-Авив на гражданскую службу помощником юриста в Государственной прокуратуре — там складывается её вера в справедливость и служение обществу.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
-            <div class="tl-date"><span data-l="en">Career</span><span data-l="he">קריירה</span></div>
+            <div class="tl-date"><span data-l="en">Career</span><span data-l="he">קריירה</span><span data-l="ru">Карьера</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">Advertising, marketing &amp; tech</span><span data-l="he">פרסום, שיווק והייטק</span></h3>
-              <p><span data-l="en">McCann advertising agency, the Isrotel hotel chain, and Natural Intelligence — moving from marketing into business development and international partnerships.</span><span data-l="he">משרד הפרסום מקאן, רשת ישרוטל ו־Natural Intelligence — מהשיווק אל הפיתוח העסקי והשותפויות הבינלאומיות.</span></p>
+              <h3><span data-l="en">Advertising, marketing &amp; tech</span><span data-l="he">פרסום, שיווק והייטק</span><span data-l="ru">Реклама, маркетинг и технологии</span></h3>
+              <p><span data-l="en">McCann advertising agency, the Isrotel hotel chain, and Natural Intelligence — moving from marketing into business development and international partnerships.</span><span data-l="he">משרד הפרסום מקאן, רשת ישרוטל ו־Natural Intelligence — מהשיווק אל הפיתוח העסקי והשותפויות הבינלאומיות.</span><span data-l="ru">Рекламное агентство McCann, сеть отелей Isrotel и Natural Intelligence — от маркетинга к развитию бизнеса и международным партнёрствам.</span></p>
             </div>
           </li>
           <li class="tl-item is-key reveal">
-            <div class="tl-date"><span data-l="en">June 24, 2025</span><span data-l="he">24 ביוני 2025</span></div>
+            <div class="tl-date"><span data-l="en">June 24, 2025</span><span data-l="he">24 ביוני 2025</span><span data-l="ru">24 июня 2025</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">The day everything changed</span><span data-l="he">היום שבו הכול השתנה</span></h3>
-              <p><span data-l="en">An Iranian missile hits the family home in Be'er Sheva. Her mother Michal and brother Eitan are killed.</span><span data-l="he">טיל איראני פוגע בבית המשפחה בבאר שבע. אמה מיכל ואחיה איתן נהרגים.</span></p>
+              <h3><span data-l="en">The day everything changed</span><span data-l="he">היום שבו הכול השתנה</span><span data-l="ru">День, когда всё изменилось</span></h3>
+              <p><span data-l="en">An Iranian missile hits the family home in Be'er Sheva. Her mother Michal and brother Eitan are killed.</span><span data-l="he">טיל איראני פוגע בבית המשפחה בבאר שבע. אמה מיכל ואחיה איתן נהרגים.</span><span data-l="ru">Иранская ракета попадает в дом семьи в Беэр-Шеве. Погибают её мама Михаль и брат Эйтан.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
-            <div class="tl-date"><span data-l="en">Oct 2025</span><span data-l="he">אוקטובר 2025</span></div>
+            <div class="tl-date"><span data-l="en">Oct 2025</span><span data-l="he">אוקטובר 2025</span><span data-l="ru">Октябрь 2025</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">Coming full circle</span><span data-l="he">סגירת מעגל</span></h3>
-              <p><span data-l="en">Fronts the Factory 54 Fall–Winter campaign, and walks Tel Aviv Fashion Week for Shenkar in her brother's last design — a tribute covered nationwide.</span><span data-l="he">מככבת בקמפיין סתיו־חורף של פקטורי 54, וצועדת בשבוע האופנה בתל אביב בתצוגת שנקר בדגם האחרון של אחיה — מחווה שסוקרה בכל הארץ.</span></p>
+              <h3><span data-l="en">Coming full circle</span><span data-l="he">סגירת מעגל</span><span data-l="ru">Круг замыкается</span></h3>
+              <p><span data-l="en">Fronts the Factory 54 Fall–Winter campaign, and walks Tel Aviv Fashion Week for Shenkar in her brother's last design — a tribute covered nationwide.</span><span data-l="he">מככבת בקמפיין סתיו־חורף של פקטורי 54, וצועדת בשבוע האופנה בתל אביב בתצוגת שנקר בדגם האחרון של אחיה — מחווה שסוקרה בכל הארץ.</span><span data-l="ru">Становится лицом осенне-зимней кампании Factory 54 и выходит на подиум Недели моды в Тель-Авиве в показе Шенкар в последней модели брата — дань памяти, о которой узнала вся страна.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
-            <div class="tl-date"><span data-l="en">Feb 2026</span><span data-l="he">פברואר 2026</span></div>
+            <div class="tl-date"><span data-l="en">Feb 2026</span><span data-l="he">פברואר 2026</span><span data-l="ru">Февраль 2026</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">Struck twice — and still standing</span><span data-l="he">נפגעה פעמיים — ועדיין עומדת</span></h3>
-              <p><span data-l="en">A missile hits beside her Tel Aviv home. She shares her story on Channel 12's morning news: "You can choose to get up and keep moving forward."</span><span data-l="he">טיל פוגע ליד ביתה בתל אביב. היא משתפת את סיפורה בחדשות הבוקר של חדשות 12: "אפשר לבחור לקום ולהמשיך קדימה."</span></p>
+              <h3><span data-l="en">Struck twice — and still standing</span><span data-l="he">נפגעה פעמיים — ועדיין עומדת</span><span data-l="ru">Удар дважды — и она по-прежнему стоит</span></h3>
+              <p><span data-l="en">A missile hits beside her Tel Aviv home. She shares her story on Channel 12's morning news: "You can choose to get up and keep moving forward."</span><span data-l="he">טיל פוגע ליד ביתה בתל אביב. היא משתפת את סיפורה בחדשות הבוקר של חדשות 12: "אפשר לבחור לקום ולהמשיך קדימה."</span><span data-l="ru">Ракета падает рядом с её домом в Тель-Авиве. Она рассказывает свою историю в утренних новостях 12-го канала: «Можно выбрать — подняться и идти дальше».</span></p>
             </div>
           </li>
           <li class="tl-item is-key reveal">
-            <div class="tl-date"><span data-l="en">July 2026</span><span data-l="he">יולי 2026</span></div>
+            <div class="tl-date"><span data-l="en">July 2026</span><span data-l="he">יולי 2026</span><span data-l="ru">Июль 2026</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">Head of the Youth Headquarters, Yashar!</span><span data-l="he">ראש מטה הצעירים, ישר!</span></h3>
-              <p><span data-l="en">Joins Gadi Eisenkot's party to lead its youth campaign nationwide, and founds Dor Yashar!, its young-generation movement — on mental resilience, civic engagement, and bringing young Israelis into the rooms where decisions are made.</span><span data-l="he">מצטרפת למפלגתו של גדי איזנקוט, מובילה את מטה הצעירים הארצי ומקימה את דור ישר!, תנועת הדור הצעיר — חוסן נפשי, מעורבות אזרחית וחיבור צעירים למוקדי קבלת ההחלטות.</span></p>
+              <h3><span data-l="en">Head of the Youth Headquarters, Yashar!</span><span data-l="he">ראש מטה הצעירים, ישר!</span><span data-l="ru">Глава молодёжного штаба «Яшар!»</span></h3>
+              <p><span data-l="en">Joins Gadi Eisenkot's party to lead its youth campaign nationwide, and founds Dor Yashar!, its young-generation movement — on mental resilience, civic engagement, and bringing young Israelis into the rooms where decisions are made.</span><span data-l="he">מצטרפת למפלגתו של גדי איזנקוט, מובילה את מטה הצעירים הארצי ומקימה את דור ישר!, תנועת הדור הצעיר — חוסן נפשי, מעורבות אזרחית וחיבור צעירים למוקדי קבלת ההחלטות.</span><span data-l="ru">Присоединяется к партии Гади Айзенкота, возглавляет её молодёжную кампанию по всей стране и основывает «Дор Яшар!», движение молодого поколения, — психологическая устойчивость, гражданская активность и место для молодых израильтян там, где принимаются решения.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
-            <div class="tl-date"><span data-l="en">Sep–Oct 2026</span><span data-l="he">ספטמבר–אוקטובר 2026</span></div>
+            <div class="tl-date"><span data-l="en">Sep–Oct 2026</span><span data-l="he">ספטמבר–אוקטובר 2026</span><span data-l="ru">Сентябрь–октябрь 2026</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">A platform for a generation</span><span data-l="he">תוכנית לדור שלם</span></h3>
-              <p><span data-l="en">Launches the first dedicated youth platform of the election, and runs as No. 38 on the Yashar! list for the 26th Knesset.</span><span data-l="he">משיקה את תוכנית הצעירים הייעודית הראשונה בבחירות, ומתמודדת במקום ה־38 ברשימת ישר! לכנסת.</span></p>
+              <h3><span data-l="en">A platform for a generation</span><span data-l="he">תוכנית לדור שלם</span><span data-l="ru">Программа для поколения</span></h3>
+              <p><span data-l="en">Launches the first dedicated youth platform of the election, and runs as No. 38 on the Yashar! list for the 26th Knesset.</span><span data-l="he">משיקה את תוכנית הצעירים הייעודית הראשונה בבחירות, ומתמודדת במקום ה־38 ברשימת ישר! לכנסת.</span><span data-l="ru">Представляет первую на этих выборах отдельную программу для молодёжи и идёт под № 38 в списке «Яшар!» в Кнессет 26-го созыва.</span></p>
             </div>
           </li>
           <li class="tl-item reveal">
-            <div class="tl-date"><span data-l="en">Next</span><span data-l="he">הלאה</span></div>
+            <div class="tl-date"><span data-l="en">Next</span><span data-l="he">הלאה</span><span data-l="ru">Дальше</span></div>
             <div class="tl-content">
-              <h3><span data-l="en">Representing Israel's next generation</span><span data-l="he">לייצג את הדור הבא של ישראל</span></h3>
-              <p><span data-l="en">On stages in Israel and abroad: telling Israel's story through her own, and leading teams that turn challenge into opportunity.</span><span data-l="he">על במות בישראל ובעולם: לספר את הסיפור של ישראל דרך הסיפור שלה, ולהוביל צוותים שהופכים אתגר להזדמנות.</span></p>
+              <h3><span data-l="en">Representing Israel's next generation</span><span data-l="he">לייצג את הדור הבא של ישראל</span><span data-l="ru">Голос следующего поколения Израиля</span></h3>
+              <p><span data-l="en">On stages in Israel and abroad: telling Israel's story through her own, and leading teams that turn challenge into opportunity.</span><span data-l="he">על במות בישראל ובעולם: לספר את הסיפור של ישראל דרך הסיפור שלה, ולהוביל צוותים שהופכים אתגר להזדמנות.</span><span data-l="ru">На сценах в Израиле и за рубежом: рассказывать историю Израиля через свою собственную и вести за собой команды.</span></p>
             </div>
           </li>
         </ol>
@@ -344,49 +367,49 @@
     <section class="section" id="work">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow reveal"><span data-l="en">Work &amp; Leadership</span><span data-l="he">עשייה ומנהיגות</span></p>
-          <h2 class="reveal reveal-d1"><span data-l="en">Five worlds. One purpose.</span><span data-l="he">חמישה עולמות. מטרה אחת.</span></h2>
-          <p class="lead reveal reveal-d2"><span data-l="en">Eliana brings together rare experience: the discipline of public service, the commercial edge of tech and advertising, and the presence of a life lived in front of the camera.</span><span data-l="he">אליענה מביאה שילוב נדיר: המשמעת של השירות הציבורי, החדות העסקית של ההייטק והפרסום, והנוכחות של מי שחיה מול המצלמה.</span></p>
+          <p class="eyebrow reveal"><span data-l="en">Work &amp; Leadership</span><span data-l="he">עשייה ומנהיגות</span><span data-l="ru">Деятельность и лидерство</span></p>
+          <h2 class="reveal reveal-d1"><span data-l="en">Five worlds. One purpose.</span><span data-l="he">חמישה עולמות. מטרה אחת.</span><span data-l="ru">Пять сфер. Одна цель.</span></h2>
+          <p class="lead reveal reveal-d2"><span data-l="en">Eliana brings together rare experience: the discipline of public service, the commercial edge of tech and advertising, and the presence of a life lived in front of the camera.</span><span data-l="he">אליענה מביאה שילוב נדיר: המשמעת של השירות הציבורי, החדות העסקית של ההייטק והפרסום, והנוכחות של מי שחיה מול המצלמה.</span><span data-l="ru">Элиана сочетает редкий опыт: дисциплину государственной службы, деловую хватку технологий и рекламы и уверенность человека, чья жизнь проходит перед камерой.</span></p>
         </div>
 
         <div class="worlds">
           <article class="world world--feature reveal">
             <div>
               <div class="world-head"><span class="world-num">01</span><img class="world-logo world-logo--yashar" src="assets/img/logos/yashar.webp" alt="ישר! עם איזנקוט · Yashar! with Eisenkot" width="776" height="148" loading="lazy"></div>
-              <h3><span data-l="en">Public Leadership</span><span data-l="he">מנהיגות ציבורית</span></h3>
-              <p class="role"><span data-l="en">Head of the Youth Headquarters · <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">Yashar! with Eisenkot</a></span><span data-l="he">ראש מטה הצעירים · <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">ישר! עם איזנקוט</a></span></p>
-              <p><span data-l="en">Since July 2026, Eliana has led the youth arm of the party headed by former IDF Chief of Staff Gadi Eisenkot — recruiting and organising young Israelis across the country and giving a generation that served, fought and grieved a seat at the table.</span><span data-l="he">מיולי 2026 אליענה עומדת בראש זרוע הצעירים של המפלגה בראשות הרמטכ"ל לשעבר גדי איזנקוט — מגייסת ומארגנת צעירים בכל רחבי הארץ, ומעניקה לדור ששירת, נלחם והתאבל מקום ליד השולחן.</span></p>
+              <h3><span data-l="en">Public Leadership</span><span data-l="he">מנהיגות ציבורית</span><span data-l="ru">Общественное лидерство</span></h3>
+              <p class="role"><span data-l="en">Head of the Youth Headquarters · <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">Yashar! with Eisenkot</a></span><span data-l="he">ראש מטה הצעירים · <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">ישר! עם איזנקוט</a></span><span data-l="ru">Глава молодёжного штаба · <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">«Яшар! с Айзенкотом»</a></span></p>
+              <p><span data-l="en">Since July 2026, Eliana has led the youth arm of the party headed by former IDF Chief of Staff Gadi Eisenkot — recruiting and organising young Israelis across the country and giving a generation that served, fought and grieved a seat at the table.</span><span data-l="he">מיולי 2026 אליענה עומדת בראש זרוע הצעירים של המפלגה בראשות הרמטכ"ל לשעבר גדי איזנקוט — מגייסת ומארגנת צעירים בכל רחבי הארץ, ומעניקה לדור ששירת, נלחם והתאבל מקום ליד השולחן.</span><span data-l="ru">С июля 2026 года Элиана руководит молодёжным крылом партии бывшего начальника Генштаба Гади Айзенкота: привлекает и объединяет молодых израильтян по всей стране и даёт поколению, которое служило, воевало и горевало, место за столом.</span></p>
               <ul>
-                <li><span data-l="en">Founder &amp; Chair of Dor Yashar!, the party's young-generation movement</span><span data-l="he">מייסדת ויו"ר דור ישר!, תנועת הדור הצעיר של המפלגה</span></li>
-                <li><span data-l="en">Advocate for bereaved siblings, orphans and victims of terror</span><span data-l="he">פעילה למען אחים ואחיות שכולים, יתומים ונפגעי פעולות איבה</span></li>
-                <li><span data-l="en">Represented bereaved siblings at Ynet's national conference on post-trauma</span><span data-l="he">ייצגה את האחים השכולים בכנס הלאומי לפוסט־טראומה של ynet</span></li>
-                <li><span data-l="en">Candidate No. 38 on the <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">Yashar!</a> list, 2026 election</span><span data-l="he">מקום 38 ברשימת <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">ישר!</a>, בחירות 2026</span></li>
+                <li><span data-l="en">Founder &amp; Chair of Dor Yashar!, the party's young-generation movement</span><span data-l="he">מייסדת ויו"ר דור ישר!, תנועת הדור הצעיר של המפלגה</span><span data-l="ru">Основательница и председатель «Дор Яшар!», движения молодого поколения партии</span></li>
+                <li><span data-l="en">Advocate for bereaved siblings, orphans and victims of terror</span><span data-l="he">פעילה למען אחים ואחיות שכולים, יתומים ונפגעי פעולות איבה</span><span data-l="ru">Поддерживает осиротевших братьев и сестёр, сирот и пострадавших от терактов</span></li>
+                <li><span data-l="en">Represented bereaved siblings at Ynet's national conference on post-trauma</span><span data-l="he">ייצגה את האחים השכולים בכנס הלאומי לפוסט־טראומה של ynet</span><span data-l="ru">Представляла осиротевших братьев и сестёр на национальной конференции Ynet о посттравме</span></li>
+                <li><span data-l="en">Candidate No. 38 on the <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">Yashar!</a> list, 2026 election</span><span data-l="he">מקום 38 ברשימת <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">ישר!</a>, בחירות 2026</span><span data-l="ru">Кандидат № 38 в списке <a class="role-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener">«Яшар!»</a>, выборы 2026 года</span></li>
               </ul>
             </div>
             <div class="side-stack">
             <div class="platform platform--dor">
-              <h4><span data-l="en">Founded by Eliana · Dor Yashar!</span><span data-l="he">הקימה אליענה · דור ישר!</span></h4>
+              <h4><span data-l="en">Founded by Eliana · Dor Yashar!</span><span data-l="he">הקימה אליענה · דור ישר!</span><span data-l="ru">Основала Элиана · «Дор Яшар!»</span></h4>
               <img class="dor-logo" src="assets/img/logos/dor-yashar.webp" alt="דור ישר! · Dor Yashar!" width="600" height="480" loading="lazy">
-              <p><span data-l="en">The young-generation movement of Yashar!, which Eliana founded and chairs. Its idea is simple: take responsibility, decide for yourself — and <em>stop reacting to reality; start shaping it.</em> Open to young Israelis in every city and town.</span><span data-l="he">תנועת הדור הצעיר של ישר!, שאליענה הקימה ועומדת בראשה. הרעיון פשוט: לקחת אחריות, להחליט בעצמנו — <em>להפסיק להגיב למציאות ולהתחיל לעצב אותה.</em> פתוחה לצעירים וצעירות בכל עיר ויישוב.</span></p>
+              <p><span data-l="en">The young-generation movement of Yashar!, which Eliana founded and chairs. Its idea is simple: take responsibility, decide for yourself — and <em>stop reacting to reality; start shaping it.</em> Open to young Israelis in every city and town.</span><span data-l="he">תנועת הדור הצעיר של ישר!, שאליענה הקימה ועומדת בראשה. הרעיון פשוט: לקחת אחריות, להחליט בעצמנו — <em>להפסיק להגיב למציאות ולהתחיל לעצב אותה.</em> פתוחה לצעירים וצעירות בכל עיר ויישוב.</span><span data-l="ru">Движение молодого поколения «Яшар!», которое Элиана основала и возглавляет. Идея проста: брать на себя ответственность, решать самим — и <em>перестать реагировать на реальность, начать её создавать.</em> Открыто для молодёжи в каждом городе и посёлке.</span></p>
               <div class="dor-photos">
                 <img src="assets/img/dor-panel.webp" alt="Eliana speaking at a Dor Yashar! event" width="764" height="832" loading="lazy">
                 <img src="assets/img/dor-beach.webp" alt="Dor Yashar! activists at a summer meetup" width="1200" height="800" loading="lazy">
               </div>
               <div class="dor-cta">
-                <a class="btn btn--light" href="https://yasharwitheisenkot.com/doryashar/" target="_blank" rel="noopener"><span data-l="en">Join Dor Yashar!</span><span data-l="he">להצטרפות לדור ישר!</span> <span class="arrow" aria-hidden="true">→</span></a>
-                <a class="text-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener"><span data-l="en">Visit Yashar!</span><span data-l="he">לאתר ישר!</span></a>
+                <a class="btn btn--light" href="https://yasharwitheisenkot.com/doryashar/" target="_blank" rel="noopener"><span data-l="en">Join Dor Yashar!</span><span data-l="he">להצטרפות לדור ישר!</span><span data-l="ru">Присоединиться к «Дор Яшар!»</span> <span class="arrow" aria-hidden="true">→</span></a>
+                <a class="text-link" href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener"><span data-l="en">Visit Yashar!</span><span data-l="he">לאתר ישר!</span><span data-l="ru">Сайт «Яшар!»</span></a>
               </div>
             </div>
             <div class="platform">
-              <h4><span data-l="en">The Youth Platform she championed</span><span data-l="he">תוכנית הצעירים שהובילה</span></h4>
-              <p><span data-l="en">The first dedicated plan for young adults published by any party in the 2026 race — on cost of living, housing, military service and the path to financial independence.</span><span data-l="he">התוכנית הייעודית הראשונה לצעירים שפרסמה מפלגה כלשהי בבחירות 2026 — יוקר המחיה, דיור, שירות צבאי והדרך לעצמאות כלכלית.</span></p>
+              <h4><span data-l="en">The Youth Platform she championed</span><span data-l="he">תוכנית הצעירים שהובילה</span><span data-l="ru">Молодёжная программа, которую она продвигала</span></h4>
+              <p><span data-l="en">The first dedicated plan for young adults published by any party in the 2026 race — on cost of living, housing, military service and the path to financial independence.</span><span data-l="he">התוכנית הייעודית הראשונה לצעירים שפרסמה מפלגה כלשהי בבחירות 2026 — יוקר המחיה, דיור, שירות צבאי והדרך לעצמאות כלכלית.</span><span data-l="ru">Первый отдельный план для молодёжи, опубликованный партией в кампании 2026 года, — о стоимости жизни, жилье, армейской службе и пути к финансовой независимости.</span></p>
               <div class="tags">
-                <span class="tag"><span data-l="en">+15% pay for conscripts</span><span data-l="he">+15% לשכר החיילים בסדיר</span></span>
-                <span class="tag"><span data-l="en">+50% for 3rd-year combat soldiers</span><span data-l="he">+50% ללוחמים בשנה השלישית</span></span>
-                <span class="tag"><span data-l="en">Renter protection</span><span data-l="he">הגנה על שוכרים</span></span>
-                <span class="tag"><span data-l="en">Paid internships</span><span data-l="he">התמחויות בתשלום</span></span>
-                <span class="tag"><span data-l="en">Financial literacy</span><span data-l="he">אוריינות פיננסית</span></span>
-                <span class="tag"><span data-l="en">Ministerial youth committee</span><span data-l="he">ועדת שרים לענייני צעירים</span></span>
+                <span class="tag"><span data-l="en">+15% pay for conscripts</span><span data-l="he">+15% לשכר החיילים בסדיר</span><span data-l="ru">+15% к зарплате срочников</span></span>
+                <span class="tag"><span data-l="en">+50% for 3rd-year combat soldiers</span><span data-l="he">+50% ללוחמים בשנה השלישית</span><span data-l="ru">+50% бойцам на третьем году службы</span></span>
+                <span class="tag"><span data-l="en">Renter protection</span><span data-l="he">הגנה על שוכרים</span><span data-l="ru">Защита арендаторов</span></span>
+                <span class="tag"><span data-l="en">Paid internships</span><span data-l="he">התמחויות בתשלום</span><span data-l="ru">Оплачиваемые стажировки</span></span>
+                <span class="tag"><span data-l="en">Financial literacy</span><span data-l="he">אוריינות פיננסית</span><span data-l="ru">Финансовая грамотность</span></span>
+                <span class="tag"><span data-l="en">Ministerial youth committee</span><span data-l="he">ועדת שרים לענייני צעירים</span><span data-l="ru">Министерский комитет по делам молодёжи</span></span>
               </div>
             </div>
             </div>
@@ -394,31 +417,31 @@
 
           <article class="world reveal">
             <div class="world-head"><span class="world-num">02</span><img class="world-logo" src="assets/img/logos/natural-intelligence.png" alt="Natural Intelligence" width="573" height="152" loading="lazy"></div>
-            <h3><span data-l="en">Technology &amp; Business</span><span data-l="he">הייטק ופיתוח עסקי</span></h3>
+            <h3><span data-l="en">Technology &amp; Business</span><span data-l="he">הייטק ופיתוח עסקי</span><span data-l="ru">Технологии и бизнес</span></h3>
             <p class="role">Natural Intelligence</p>
-            <p><span data-l="en">At Natural Intelligence, a global leader in AI-powered comparison platforms, Eliana rose from marketing to business development manager — building partnerships and growth across international markets.</span><span data-l="he">ב־Natural Intelligence, חברה מובילה בעולם בפלטפורמות השוואה מבוססות בינה מלאכותית, אליענה התקדמה מהשיווק לתפקיד מנהלת פיתוח עסקי — בניית שותפויות וצמיחה בשווקים בינלאומיים.</span></p>
+            <p><span data-l="en">At Natural Intelligence, a global leader in AI-powered comparison platforms, Eliana rose from marketing to business development manager — building partnerships and growth across international markets.</span><span data-l="he">ב־Natural Intelligence, חברה מובילה בעולם בפלטפורמות השוואה מבוססות בינה מלאכותית, אליענה התקדמה מהשיווק לתפקיד מנהלת פיתוח עסקי — בניית שותפויות וצמיחה בשווקים בינלאומיים.</span><span data-l="ru">В Natural Intelligence, мировом лидере платформ сравнения на основе ИИ, Элиана выросла от маркетолога до менеджера по развитию бизнеса — партнёрства и рост на международных рынках.</span></p>
             <ul>
-              <li><span data-l="en">Business development &amp; international partnerships</span><span data-l="he">פיתוח עסקי ושותפויות בינלאומיות</span></li>
-              <li><span data-l="en">Performance and growth marketing</span><span data-l="he">שיווק ביצועים וצמיחה</span></li>
+              <li><span data-l="en">Business development &amp; international partnerships</span><span data-l="he">פיתוח עסקי ושותפויות בינלאומיות</span><span data-l="ru">Развитие бизнеса и международные партнёрства</span></li>
+              <li><span data-l="en">Performance and growth marketing</span><span data-l="he">שיווק ביצועים וצמיחה</span><span data-l="ru">Performance- и growth-маркетинг</span></li>
             </ul>
           </article>
 
           <article class="world reveal reveal-d1">
             <div class="world-head"><span class="world-num">03</span><span class="world-logos"><img class="world-logo" src="assets/img/logos/mccann.svg" alt="McCann" width="115" height="27" loading="lazy"><img class="world-logo world-logo--square" src="assets/img/logos/isrotel.png" alt="Isrotel" width="402" height="372" loading="lazy"></span></div>
-            <h3><span data-l="en">Advertising &amp; Marketing</span><span data-l="he">פרסום ושיווק</span></h3>
+            <h3><span data-l="en">Advertising &amp; Marketing</span><span data-l="he">פרסום ושיווק</span><span data-l="ru">Реклама и маркетинг</span></h3>
             <p class="role">McCann · Isrotel</p>
-            <p><span data-l="en">Her marketing career took her through McCann, one of the world's great advertising networks, and the digital team of Isrotel, Israel's leading hotel group — across digital, media and brand.</span><span data-l="he">הקריירה השיווקית שלה עברה במקאן, מרשתות הפרסום הגדולות בעולם, ובצוות הדיגיטל של ישרוטל, רשת המלונות המובילה בישראל — דיגיטל, מדיה ומיתוג.</span></p>
+            <p><span data-l="en">Her marketing career took her through McCann, one of the world's great advertising networks, and the digital team of Isrotel, Israel's leading hotel group — across digital, media and brand.</span><span data-l="he">הקריירה השיווקית שלה עברה במקאן, מרשתות הפרסום הגדולות בעולם, ובצוות הדיגיטל של ישרוטל, רשת המלונות המובילה בישראל — דיגיטל, מדיה ומיתוג.</span><span data-l="ru">Её маркетинговая карьера прошла через McCann, одну из крупнейших рекламных сетей мира, и digital-команду Isrotel, ведущей гостиничной сети Израиля, — digital, медиа и бренд.</span></p>
             <ul>
-              <li><span data-l="en">Digital, media &amp; brand strategy</span><span data-l="he">דיגיטל, מדיה ואסטרטגיית מותג</span></li>
-              <li><span data-l="en">Storytelling that moves audiences</span><span data-l="he">סטוריטלינג שמניע קהלים</span></li>
+              <li><span data-l="en">Digital, media &amp; brand strategy</span><span data-l="he">דיגיטל, מדיה ואסטרטגיית מותג</span><span data-l="ru">Digital, медиа и бренд-стратегия</span></li>
+              <li><span data-l="en">Storytelling that moves audiences</span><span data-l="he">סטוריטלינג שמניע קהלים</span><span data-l="ru">Сторителлинг, который трогает аудиторию</span></li>
             </ul>
           </article>
 
           <article class="world reveal">
             <div class="world-head"><span class="world-num">04</span></div>
-            <h3><span data-l="en">Fashion</span><span data-l="he">אופנה</span></h3>
-            <p class="role"><span data-l="en">Model · Inch Model Agency</span><span data-l="he">דוגמנית · סוכנות הדוגמנות Inch</span></p>
-            <p><span data-l="en">A model since her teens, Eliana has fronted campaigns for leading Israeli brands, and in 2025 turned the runway into a place of remembrance.</span><span data-l="he">דוגמנית מגיל ההתבגרות, אליענה הובילה קמפיינים של מותגים ישראליים מובילים, וב־2025 הפכה את המסלול למקום של זיכרון.</span></p>
+            <h3><span data-l="en">Fashion</span><span data-l="he">אופנה</span><span data-l="ru">Мода</span></h3>
+            <p class="role"><span data-l="en">Model · Inch Model Agency</span><span data-l="he">דוגמנית · סוכנות הדוגמנות Inch</span><span data-l="ru">Модель · модельное агентство Inch</span></p>
+            <p><span data-l="en">A model since her teens, Eliana has fronted campaigns for leading Israeli brands, and in 2025 turned the runway into a place of remembrance.</span><span data-l="he">דוגמנית מגיל ההתבגרות, אליענה הובילה קמפיינים של מותגים ישראליים מובילים, וב־2025 הפכה את המסלול למקום של זיכרון.</span><span data-l="ru">Модель с подросткового возраста, Элиана снималась в кампаниях ведущих израильских брендов, а в 2025 году превратила подиум в место памяти.</span></p>
             <div class="tags">
               <span class="tag">Factory 54</span><span class="tag">Emanuel</span><span class="tag">Ata</span><span class="tag">Ronen Chen</span><span class="tag">Twentyfourseven</span><span class="tag">Intima</span><span class="tag">Story</span>
             </div>
@@ -426,11 +449,11 @@
 
           <article class="world reveal reveal-d1">
             <div class="world-head"><span class="world-num">05</span></div>
-            <h3><span data-l="en">Public Service</span><span data-l="he">שירות ציבורי</span></h3>
-            <p class="role"><span data-l="en">State Attorney's Office · Tel Aviv</span><span data-l="he">פרקליטות המדינה · תל אביב</span></p>
-            <p><span data-l="en">Her national service as a paralegal at the State Attorney's Office gave her a lasting belief in the rule of law — and a first-hand view of how the state treats the people it serves.</span><span data-l="he">השירות הלאומי כפרליגלית בפרקליטות המדינה הקנה לה אמונה עמוקה בשלטון החוק — והיכרות מקרוב עם האופן שבו המדינה מתייחסת לאנשים שהיא משרתת.</span></p>
+            <h3><span data-l="en">Public Service</span><span data-l="he">שירות ציבורי</span><span data-l="ru">Государственная служба</span></h3>
+            <p class="role"><span data-l="en">State Attorney's Office · Tel Aviv</span><span data-l="he">פרקליטות המדינה · תל אביב</span><span data-l="ru">Государственная прокуратура · Тель-Авив</span></p>
+            <p><span data-l="en">Her national service as a paralegal at the State Attorney's Office gave her a lasting belief in the rule of law — and a first-hand view of how the state treats the people it serves.</span><span data-l="he">השירות הלאומי כפרליגלית בפרקליטות המדינה הקנה לה אמונה עמוקה בשלטון החוק — והיכרות מקרוב עם האופן שבו המדינה מתייחסת לאנשים שהיא משרתת.</span><span data-l="ru">Гражданская служба помощником юриста в Государственной прокуратуре дала ей прочную веру в верховенство закона — и возможность увидеть вблизи, как государство относится к людям, которым служит.</span></p>
             <ul>
-              <li><span data-l="en">"I really want to bring justice to people — I believe in the law."</span><span data-l="he">"אני מאוד רוצה להשיג צדק לאנשים ואני מאמינה בחוקים."</span></li>
+              <li><span data-l="en">"I really want to bring justice to people — I believe in the law."</span><span data-l="he">"אני מאוד רוצה להשיג צדק לאנשים ואני מאמינה בחוקים."</span><span data-l="ru">«Я очень хочу добиваться справедливости для людей — я верю в закон».</span></li>
             </ul>
           </article>
         </div>
@@ -442,61 +465,61 @@
       <div class="wrap">
         <div class="speaking-top">
           <div>
-            <p class="eyebrow reveal"><span data-l="en">Speaking</span><span data-l="he">הרצאות</span></p>
-            <h2 class="reveal reveal-d1"><span data-l="en">A story that moves rooms to action.</span><span data-l="he">סיפור שמניע אולמות לפעולה.</span></h2>
+            <p class="eyebrow reveal"><span data-l="en">Speaking</span><span data-l="he">הרצאות</span><span data-l="ru">Лекции</span></p>
+            <h2 class="reveal reveal-d1"><span data-l="en">A story that moves rooms to action.</span><span data-l="he">סיפור שמניע אולמות לפעולה.</span><span data-l="ru">История, которая побуждает к действию.</span></h2>
           </div>
-          <p class="lead reveal reveal-d2"><span data-l="en">Eliana speaks with rare honesty about loss, resilience and choosing purpose — and about the generation that will shape Israel's future. Her talks leave audiences with something to act on, not just something to feel.</span><span data-l="he">אליענה מדברת בכנות נדירה על אובדן, חוסן ובחירה במשמעות — ועל הדור שיעצב את עתידה של ישראל. ההרצאות שלה משאירות את הקהל עם משהו לעשות, לא רק עם משהו להרגיש.</span></p>
+          <p class="lead reveal reveal-d2"><span data-l="en">Eliana speaks with rare honesty about loss, resilience and choosing purpose — and about the generation that will shape Israel's future. Her talks leave audiences with something to act on, not just something to feel.</span><span data-l="he">אליענה מדברת בכנות נדירה על אובדן, חוסן ובחירה במשמעות — ועל הדור שיעצב את עתידה של ישראל. ההרצאות שלה משאירות את הקהל עם משהו לעשות, לא רק עם משהו להרגיש.</span><span data-l="ru">Элиана с редкой откровенностью говорит об утрате, стойкости и выборе смысла — и о поколении, которое определит будущее Израиля. После её выступлений у слушателей остаётся не только чувство, но и желание действовать.</span></p>
         </div>
 
         <div class="topics">
           <article class="topic reveal">
             <span class="topic-num">I</span>
-            <h3><span data-l="en">Choosing to Rise</span><span data-l="he">לבחור לקום</span></h3>
-            <p class="for"><span data-l="en">Keynote · All audiences</span><span data-l="he">הרצאה מרכזית · לכל קהל</span></p>
-            <p><span data-l="en">Her signature talk. How do you go on when half your family is gone in a moment? Twenty wishes, twenty traits, and the daily decision to turn life's hardest challenges into opportunity — and pain into purpose.</span><span data-l="he">ההרצאה המזוהה איתה. איך ממשיכים כשחצי מהמשפחה נעלמת ברגע? עשרים משאלות, עשרים תכונות, וההחלטה היומיומית להפוך את האתגרים הקשים ביותר להזדמנות — ואת הכאב למשמעות.</span></p>
+            <h3><span data-l="en">Choosing to Rise</span><span data-l="he">לבחור לקום</span><span data-l="ru">Выбрать подняться</span></h3>
+            <p class="for"><span data-l="en">Keynote · All audiences</span><span data-l="he">הרצאה מרכזית · לכל קהל</span><span data-l="ru">Ключевая лекция · Для любой аудитории</span></p>
+            <p><span data-l="en">Her signature talk. How do you go on when half your family is gone in a moment? Twenty wishes, twenty traits, and the daily decision to turn life's hardest challenges into opportunity — and pain into purpose.</span><span data-l="he">ההרצאה המזוהה איתה. איך ממשיכים כשחצי מהמשפחה נעלמת ברגע? עשרים משאלות, עשרים תכונות, וההחלטה היומיומית להפוך את האתגרים הקשים ביותר להזדמנות — ואת הכאב למשמעות.</span><span data-l="ru">Её главная лекция. Как жить дальше, когда половина семьи исчезает в одно мгновение? Двадцать желаний, двадцать качеств и ежедневное решение превращать боль в смысл.</span></p>
           </article>
           <article class="topic reveal reveal-d1">
             <span class="topic-num">II</span>
-            <h3><span data-l="en">Israel, Through My Eyes</span><span data-l="he">ישראל, דרך העיניים שלי</span></h3>
-            <p class="for"><span data-l="en">Communities, campuses &amp; delegations abroad</span><span data-l="he">קהילות, קמפוסים ומשלחות בעולם</span></p>
-            <p><span data-l="en">A first-hand account of life under fire — of loss, of a country that keeps getting up, and of the young Israelis who refuse to leave. A human voice for Israel on the world stage.</span><span data-l="he">עדות אישית מהחיים תחת אש — על אובדן, על מדינה שממשיכה לקום, ועל הצעירים הישראלים שמסרבים לעזוב. קול אנושי לישראל על הבמה העולמית.</span></p>
+            <h3><span data-l="en">Israel, Through My Eyes</span><span data-l="he">ישראל, דרך העיניים שלי</span><span data-l="ru">Израиль моими глазами</span></h3>
+            <p class="for"><span data-l="en">Communities, campuses &amp; delegations abroad</span><span data-l="he">קהילות, קמפוסים ומשלחות בעולם</span><span data-l="ru">Общины, кампусы и делегации за рубежом</span></p>
+            <p><span data-l="en">A first-hand account of life under fire — of loss, of a country that keeps getting up, and of the young Israelis who refuse to leave. A human voice for Israel on the world stage.</span><span data-l="he">עדות אישית מהחיים תחת אש — על אובדן, על מדינה שממשיכה לקום, ועל הצעירים הישראלים שמסרבים לעזוב. קול אנושי לישראל על הבמה העולמית.</span><span data-l="ru">Рассказ из первых уст о жизни под обстрелами — об утрате, о стране, которая снова и снова поднимается, и о молодых израильтянах, которые отказываются уезжать. Человеческий голос Израиля на мировой сцене.</span></p>
           </article>
           <article class="topic reveal">
             <span class="topic-num">III</span>
-            <h3><span data-l="en">The Present, Not the Future</span><span data-l="he">ההווה, לא העתיד</span></h3>
-            <p class="for"><span data-l="en">Youth movements, schools &amp; pre-army programs</span><span data-l="he">תנועות נוער, בתי ספר ומכינות</span></p>
-            <p><span data-l="en">"Our generation is not a promise for the future. We are here now." A call to young people to step into civic life, lead, and claim their place where decisions are made.</span><span data-l="he">"הדור שלנו הוא לא הבטחה לעתיד. אנחנו כאן עכשיו." קריאה לצעירים להיכנס לחיים האזרחיים, להוביל ולתבוע את מקומם במוקדי ההחלטה.</span></p>
+            <h3><span data-l="en">The Present, Not the Future</span><span data-l="he">ההווה, לא העתיד</span><span data-l="ru">Настоящее, а не будущее</span></h3>
+            <p class="for"><span data-l="en">Youth movements, schools &amp; pre-army programs</span><span data-l="he">תנועות נוער, בתי ספר ומכינות</span><span data-l="ru">Молодёжные движения, школы и подготовка к армии</span></p>
+            <p><span data-l="en">"Our generation is not a promise for the future. We are here now." A call to young people to step into civic life, lead, and claim their place where decisions are made.</span><span data-l="he">"הדור שלנו הוא לא הבטחה לעתיד. אנחנו כאן עכשיו." קריאה לצעירים להיכנס לחיים האזרחיים, להוביל ולתבוע את מקומם במוקדי ההחלטה.</span><span data-l="ru">«Наше поколение — не обещание на будущее. Мы здесь и сейчас». Призыв к молодёжи включиться в общественную жизнь, вести за собой и занять своё место там, где принимаются решения.</span></p>
           </article>
           <article class="topic reveal reveal-d1">
             <span class="topic-num">IV</span>
-            <h3><span data-l="en">Resilience at Work</span><span data-l="he">חוסן בעבודה</span></h3>
-            <p class="for"><span data-l="en">Companies, leadership teams &amp; HR</span><span data-l="he">חברות, צוותי הנהלה ומשאבי אנוש</span></p>
-            <p><span data-l="en">Drawing on her years in tech and advertising: leading and performing through crisis, mental resilience as a team skill, and how to "smile and live alongside the pain" without losing momentum.</span><span data-l="he">מתוך שנותיה בהייטק ובפרסום: להוביל ולתפקד בזמן משבר, חוסן נפשי כמיומנות צוותית, ואיך "לחייך ולחיות לצד הכאב" בלי לאבד תנופה.</span></p>
+            <h3><span data-l="en">Resilience at Work</span><span data-l="he">חוסן בעבודה</span><span data-l="ru">Стойкость на работе</span></h3>
+            <p class="for"><span data-l="en">Companies, leadership teams &amp; HR</span><span data-l="he">חברות, צוותי הנהלה ומשאבי אנוש</span><span data-l="ru">Компании, руководящие команды и HR</span></p>
+            <p><span data-l="en">Drawing on her years in tech and advertising: leading and performing through crisis, mental resilience as a team skill, and how to "smile and live alongside the pain" without losing momentum.</span><span data-l="he">מתוך שנותיה בהייטק ובפרסום: להוביל ולתפקד בזמן משבר, חוסן נפשי כמיומנות צוותית, ואיך "לחייך ולחיות לצד הכאב" בלי לאבד תנופה.</span><span data-l="ru">На основе её опыта в технологиях и рекламе: как руководить и работать в кризис, психологическая устойчивость как командный навык и как «улыбаться и жить рядом с болью», не теряя темпа.</span></p>
           </article>
         </div>
 
         <div class="formats">
           <div class="format reveal">
-            <h4><span data-l="en">Keynote</span><span data-l="he">הרצאה מרכזית</span></h4>
-            <p><span data-l="en">30–60 minutes, with Q&amp;A</span><span data-l="he">30–60 דקות, כולל שאלות ותשובות</span></p>
+            <h4><span data-l="en">Keynote</span><span data-l="he">הרצאה מרכזית</span><span data-l="ru">Ключевая лекция</span></h4>
+            <p><span data-l="en">30–60 minutes, with Q&amp;A</span><span data-l="he">30–60 דקות, כולל שאלות ותשובות</span><span data-l="ru">30–60 минут, с вопросами из зала</span></p>
           </div>
           <div class="format reveal reveal-d1">
-            <h4><span data-l="en">Fireside chat</span><span data-l="he">שיחה פתוחה</span></h4>
-            <p><span data-l="en">An intimate, moderated conversation</span><span data-l="he">שיחה אינטימית בהנחיה</span></p>
+            <h4><span data-l="en">Fireside chat</span><span data-l="he">שיחה פתוחה</span><span data-l="ru">Открытая беседа</span></h4>
+            <p><span data-l="en">An intimate, moderated conversation</span><span data-l="he">שיחה אינטימית בהנחיה</span><span data-l="ru">Камерный разговор с модератором</span></p>
           </div>
           <div class="format reveal reveal-d2">
-            <h4><span data-l="en">Panels</span><span data-l="he">פאנלים</span></h4>
-            <p><span data-l="en">Conferences, summits &amp; galas</span><span data-l="he">כנסים, פסגות ואירועי גאלה</span></p>
+            <h4><span data-l="en">Panels</span><span data-l="he">פאנלים</span><span data-l="ru">Панельные дискуссии</span></h4>
+            <p><span data-l="en">Conferences, summits &amp; galas</span><span data-l="he">כנסים, פסגות ואירועי גאלה</span><span data-l="ru">Конференции, саммиты и гала-вечера</span></p>
           </div>
           <div class="format reveal reveal-d3">
-            <h4><span data-l="en">Workshops</span><span data-l="he">סדנאות</span></h4>
-            <p><span data-l="en">For teams and young leaders</span><span data-l="he">לצוותים ולמנהיגים צעירים</span></p>
+            <h4><span data-l="en">Workshops</span><span data-l="he">סדנאות</span><span data-l="ru">Мастер-классы</span></h4>
+            <p><span data-l="en">For teams and young leaders</span><span data-l="he">לצוותים ולמנהיגים צעירים</span><span data-l="ru">Для команд и молодых лидеров</span></p>
           </div>
         </div>
 
         <div class="speaking-cta reveal">
-          <p><span data-l="en">Available in Israel and internationally, in Hebrew and English.</span><span data-l="he">זמינה להרצאות בישראל ובעולם, בעברית ובאנגלית.</span></p>
-          <a class="btn btn--light" href="#contact" data-inquiry="lecture"><span data-l="en">Request a lecture</span><span data-l="he">לתיאום הרצאה</span> <span class="arrow" aria-hidden="true">→</span></a>
+          <p><span data-l="en">Available in Israel and internationally, in Hebrew and English.</span><span data-l="he">זמינה להרצאות בישראל ובעולם, בעברית ובאנגלית.</span><span data-l="ru">Выступает в Израиле и за рубежом, на иврите и английском.</span></p>
+          <a class="btn btn--light" href="#contact" data-inquiry="lecture"><span data-l="en">Request a lecture</span><span data-l="he">לתיאום הרצאה</span><span data-l="ru">Заказать лекцию</span> <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -504,27 +527,27 @@
     <!-- ============ QUOTES ============ -->
     <section class="section section--white quotes" aria-label="In her words">
       <div class="wrap">
-        <p class="eyebrow reveal" style="justify-content:center"><span data-l="en">In Her Words</span><span data-l="he">במילים שלה</span></p>
+        <p class="eyebrow reveal" style="justify-content:center"><span data-l="en">In Her Words</span><span data-l="he">במילים שלה</span><span data-l="ru">Её словами</span></p>
         <div class="quote-stage" aria-live="polite">
           <figure class="quote is-active">
-            <p><span data-l="en">"Our generation is not a promise for the future. We are here now."</span><span data-l="he">"הדור שלנו הוא לא הבטחה לעתיד. אנחנו כאן עכשיו."</span></p>
-            <footer><span data-l="en">On joining Yashar!, July 2026</span><span data-l="he">עם הצטרפותה לישר!, יולי 2026</span></footer>
+            <p><span data-l="en">"Our generation is not a promise for the future. We are here now."</span><span data-l="he">"הדור שלנו הוא לא הבטחה לעתיד. אנחנו כאן עכשיו."</span><span data-l="ru">«Наше поколение — не обещание на будущее. Мы здесь и сейчас».</span></p>
+            <footer><span data-l="en">On joining Yashar!, July 2026</span><span data-l="he">עם הצטרפותה לישר!, יולי 2026</span><span data-l="ru">При вступлении в «Яшар!», июль 2026</span></footer>
           </figure>
           <figure class="quote">
-            <p><span data-l="en">"It's important to me to show people that you can smile and live alongside the pain."</span><span data-l="he">"חשוב לי להראות לאנשים שאפשר לחייך ולחיות לצד הכאב."</span></p>
-            <footer><span data-l="en">Channel 12 News, March 2026</span><span data-l="he">חדשות 12, מרץ 2026</span></footer>
+            <p><span data-l="en">"It's important to me to show people that you can smile and live alongside the pain."</span><span data-l="he">"חשוב לי להראות לאנשים שאפשר לחייך ולחיות לצד הכאב."</span><span data-l="ru">«Для меня важно показать людям, что можно улыбаться и жить рядом с болью».</span></p>
+            <footer><span data-l="en">Channel 12 News, March 2026</span><span data-l="he">חדשות 12, מרץ 2026</span><span data-l="ru">Новости 12-го канала, март 2026</span></footer>
           </figure>
           <figure class="quote">
-            <p><span data-l="en">"I don't want to join those who leave. I want to live here — and make it good here."</span><span data-l="he">"אני לא רוצה להצטרף לחבר'ה שנוטשים את הארץ, רוצה לחיות פה ושיהיה כאן טוב."</span></p>
-            <footer><span data-l="en">Walla!, August 2026</span><span data-l="he">וואלה!, אוגוסט 2026</span></footer>
+            <p><span data-l="en">"I don't want to join those who leave. I want to live here — and make it good here."</span><span data-l="he">"אני לא רוצה להצטרף לחבר'ה שנוטשים את הארץ, רוצה לחיות פה ושיהיה כאן טוב."</span><span data-l="ru">«Я не хочу быть среди тех, кто уезжает. Я хочу жить здесь — и чтобы здесь было хорошо».</span></p>
+            <footer><span data-l="en">Walla!, August 2026</span><span data-l="he">וואלה!, אוגוסט 2026</span><span data-l="ru">Walla!, август 2026</span></footer>
           </figure>
           <figure class="quote">
-            <p><span data-l="en">"I want to feel that the tragedy I went through was not in vain."</span><span data-l="he">"רוצה להרגיש שהאסון שעברתי לא היה לחינם."</span></p>
-            <footer><span data-l="en">Ynet, August 2026</span><span data-l="he">ynet, אוגוסט 2026</span></footer>
+            <p><span data-l="en">"I want to feel that the tragedy I went through was not in vain."</span><span data-l="he">"רוצה להרגיש שהאסון שעברתי לא היה לחינם."</span><span data-l="ru">«Я хочу чувствовать, что трагедия, которую я пережила, была не напрасной».</span></p>
+            <footer><span data-l="en">Ynet, August 2026</span><span data-l="he">ynet, אוגוסט 2026</span><span data-l="ru">Ynet, август 2026</span></footer>
           </figure>
           <figure class="quote">
-            <p><span data-l="en">"I believe in the power of community, engagement and eye-level dialogue to create change."</span><span data-l="he">"אני מאמינה בכוח של קהילה, מעורבות ושיח בגובה העיניים כדי לייצר שינוי."</span></p>
-            <footer><span data-l="en">Walla!, July 2026</span><span data-l="he">וואלה!, יולי 2026</span></footer>
+            <p><span data-l="en">"I believe in the power of community, engagement and eye-level dialogue to create change."</span><span data-l="he">"אני מאמינה בכוח של קהילה, מעורבות ושיח בגובה העיניים כדי לייצר שינוי."</span><span data-l="ru">«Я верю в силу сообщества, вовлечённости и разговора на равных, чтобы менять жизнь».</span></p>
+            <footer><span data-l="en">Walla!, July 2026</span><span data-l="he">וואלה!, יולי 2026</span><span data-l="ru">Walla!, июль 2026</span></footer>
           </figure>
         </div>
         <div class="quote-dots" role="tablist" aria-label="Quotes"></div>
@@ -535,8 +558,8 @@
     <section class="section" id="portfolio">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow reveal"><span data-l="en">Portfolio</span><span data-l="he">פורטפוליו</span></p>
-          <h2 class="reveal reveal-d1"><span data-l="en">In frame</span><span data-l="he">בפריים</span></h2>
+          <p class="eyebrow reveal"><span data-l="en">Portfolio</span><span data-l="he">פורטפוליו</span><span data-l="ru">Портфолио</span></p>
+          <h2 class="reveal reveal-d1"><span data-l="en">In frame</span><span data-l="he">בפריים</span><span data-l="ru">В кадре</span></h2>
         </div>
         <div class="gallery">
           <figure class="reveal"><img src="assets/img/gallery-1.webp" alt="Eliana Sachs, fashion editorial" loading="lazy" width="1024" height="1535"></figure>
@@ -549,21 +572,21 @@
     <section class="section" id="media">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow reveal"><span data-l="en">Media</span><span data-l="he">תקשורת</span></p>
-          <h2 class="reveal reveal-d1"><span data-l="en">In the press</span><span data-l="he">בתקשורת</span></h2>
-          <p class="lead reveal reveal-d2"><span data-l="en">Interviews, profiles and coverage from Israel's leading outlets.</span><span data-l="he">ראיונות, כתבות פרופיל וסיקור בכלי התקשורת המובילים בישראל.</span></p>
+          <p class="eyebrow reveal"><span data-l="en">Media</span><span data-l="he">תקשורת</span><span data-l="ru">СМИ</span></p>
+          <h2 class="reveal reveal-d1"><span data-l="en">In the press</span><span data-l="he">בתקשורת</span><span data-l="ru">В прессе</span></h2>
+          <p class="lead reveal reveal-d2"><span data-l="en">Interviews, profiles and coverage from Israel's leading outlets.</span><span data-l="he">ראיונות, כתבות פרופיל וסיקור בכלי התקשורת המובילים בישראל.</span><span data-l="ru">Интервью, портреты и публикации в ведущих СМИ Израиля.</span></p>
         </div>
 
         <div class="media-filters" role="group" aria-label="Filter">
-          <button type="button" data-filter="all" aria-pressed="true"><span data-l="en">All</span><span data-l="he">הכול</span></button>
-          <button type="button" data-filter="interview" aria-pressed="false"><span data-l="en">Interviews</span><span data-l="he">ראיונות</span></button>
-          <button type="button" data-filter="politics" aria-pressed="false"><span data-l="en">Politics</span><span data-l="he">פוליטיקה</span></button>
-          <button type="button" data-filter="fashion" aria-pressed="false"><span data-l="en">Fashion</span><span data-l="he">אופנה</span></button>
-          <button type="button" data-filter="english" aria-pressed="false"><span data-l="en">In English</span><span data-l="he">באנגלית</span></button>
+          <button type="button" data-filter="all" aria-pressed="true"><span data-l="en">All</span><span data-l="he">הכול</span><span data-l="ru">Все</span></button>
+          <button type="button" data-filter="interview" aria-pressed="false"><span data-l="en">Interviews</span><span data-l="he">ראיונות</span><span data-l="ru">Интервью</span></button>
+          <button type="button" data-filter="politics" aria-pressed="false"><span data-l="en">Politics</span><span data-l="he">פוליטיקה</span><span data-l="ru">Политика</span></button>
+          <button type="button" data-filter="fashion" aria-pressed="false"><span data-l="en">Fashion</span><span data-l="he">אופנה</span><span data-l="ru">Мода</span></button>
+          <button type="button" data-filter="english" aria-pressed="false"><span data-l="en">In English</span><span data-l="he">באנגלית</span><span data-l="ru">На английском</span></button>
         </div>
 
         <ul class="media-list" id="media-list"><!-- filled from assets/js/main.js --></ul>
-        <p class="media-note"><span data-l="en">Journalists and producers: for interviews, photos and a press kit, please use the contact form below and select "Media".</span><span data-l="he">עיתונאים ומפיקים: לראיונות, תמונות וערכת עיתונות, השתמשו בטופס למטה ובחרו "תקשורת".</span></p>
+        <p class="media-note"><span data-l="en">Journalists and producers: for interviews, photos and a press kit, please use the contact form below and select "Media".</span><span data-l="he">עיתונאים ומפיקים: לראיונות, תמונות וערכת עיתונות, השתמשו בטופס למטה ובחרו "תקשורת".</span><span data-l="ru">Журналистам и продюсерам: для интервью, фотографий и пресс-кита воспользуйтесь формой ниже и выберите «СМИ».</span></p>
       </div>
     </section>
 
@@ -572,94 +595,90 @@
       <div class="wrap">
         <div class="contact-grid">
           <div>
-            <p class="eyebrow reveal"><span data-l="en">Contact</span><span data-l="he">צור קשר</span></p>
-            <h2 class="reveal reveal-d1"><span data-l="en">Let's create impact together.</span><span data-l="he">בואו ניצור השפעה יחד.</span></h2>
-            <p class="lead reveal reveal-d2"><span data-l="en">For lectures, media, collaborations and public engagements, reach out to Eliana's team. We respond to every inquiry.</span><span data-l="he">להרצאות, תקשורת, שיתופי פעולה ואירועים ציבוריים — פנו לצוות של אליענה. אנחנו עונים לכל פנייה.</span></p>
-            <ul class="contact-ways reveal reveal-d3">
-              <li>
-                <h4><span data-l="en">Lectures &amp; events</span><span data-l="he">הרצאות ואירועים</span></h4>
-                <p><span data-l="en">Conferences, companies, communities, campuses and delegations — in Israel and abroad.</span><span data-l="he">כנסים, חברות, קהילות, קמפוסים ומשלחות — בישראל ובעולם.</span></p>
-              </li>
-              <li>
-                <h4><span data-l="en">Media</span><span data-l="he">תקשורת</span></h4>
-                <p><span data-l="en">Interviews, TV, podcasts and photo requests.</span><span data-l="he">ראיונות, טלוויזיה, פודקאסטים ובקשות לתמונות.</span></p>
-              </li>
-              <li>
-                <h4><span data-l="en">Direct</span><span data-l="he">ישירות</span></h4>
-                <p><a class="js-email" href="mailto:elianazmae@gmail.com">elianazmae@gmail.com</a></p>
-              </li>
-            </ul>
+            <p class="eyebrow reveal"><span data-l="en">Contact</span><span data-l="he">צור קשר</span><span data-l="ru">Контакты</span></p>
+            <h2 class="reveal reveal-d1"><span data-l="en">Let's create impact together.</span><span data-l="he">בואו ניצור השפעה יחד.</span><span data-l="ru">Давайте действовать вместе.</span></h2>
+            <p class="lead reveal reveal-d2"><span data-l="en">For lectures, media and collaborations, write to Eliana directly or use the form.</span><span data-l="he">להרצאות, תקשורת ושיתופי פעולה — כתבו לאליענה ישירות או השתמשו בטופס.</span><span data-l="ru">По вопросам лекций, СМИ и сотрудничества пишите Элиане напрямую или воспользуйтесь формой.</span></p>
+            <div class="contact-direct reveal reveal-d3">
+              <p class="contact-label"><span data-l="en">Email</span><span data-l="he">אימייל</span><span data-l="ru">Эл. почта</span></p>
+              <a class="contact-email js-email" href="mailto:elianazmae@gmail.com">elianazmae@gmail.com</a>
+              <p class="contact-label"><span data-l="en">Follow Eliana</span><span data-l="he">עקבו אחרי אליענה</span><span data-l="ru">Подписывайтесь на Элиану</span></p>
+              <ul class="socials">
+                <li><a href="https://www.instagram.com/eliana.sachs/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span>Instagram</span><small>@eliana.sachs</small></a></li>
+                <li><a href="https://www.tiktok.com/@eliana.za" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.3 1.9 3.9 4.2 4.1v3.2c-1.6.1-3-.4-4.2-1.2v6.1c0 3.4-2.6 5.8-5.9 5.8-3.2 0-5.7-2.5-5.7-5.6 0-3.5 3-6.1 6.6-5.5v3.3c-1.7-.5-3.3.6-3.3 2.3 0 1.4 1.1 2.4 2.5 2.4 1.5 0 2.6-1 2.6-2.9V3h3.2z"/></svg><span>TikTok</span><small>@eliana.za</small></a></li>
+                <li><a href="https://www.linkedin.com/in/eliana-sachs-1868572a1/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg><span>LinkedIn</span><small>Eliana Sachs</small></a></li>
+              </ul>
+            </div>
           </div>
 
           <form class="form reveal" id="contact-form" novalidate>
             <fieldset class="inquiry-types">
-              <legend><span data-l="en">I'm reaching out about</span><span data-l="he">אני פונה בנושא</span></legend>
-              <label class="chip"><input type="radio" name="inquiry" value="Lecture booking" checked><span><span data-l="en">Lecture booking</span><span data-l="he">הזמנת הרצאה</span></span></label>
-              <label class="chip"><input type="radio" name="inquiry" value="Media"><span><span data-l="en">Media</span><span data-l="he">תקשורת</span></span></label>
-              <label class="chip"><input type="radio" name="inquiry" value="Collaboration"><span><span data-l="en">Collaboration</span><span data-l="he">שיתוף פעולה</span></span></label>
-              <label class="chip"><input type="radio" name="inquiry" value="Other"><span><span data-l="en">Other</span><span data-l="he">אחר</span></span></label>
+              <legend><span data-l="en">I'm reaching out about</span><span data-l="he">אני פונה בנושא</span><span data-l="ru">Тема обращения</span></legend>
+              <label class="chip"><input type="radio" name="inquiry" value="Lecture booking" checked><span><span data-l="en">Lecture booking</span><span data-l="he">הזמנת הרצאה</span><span data-l="ru">Заказ лекции</span></span></label>
+              <label class="chip"><input type="radio" name="inquiry" value="Media"><span><span data-l="en">Media</span><span data-l="he">תקשורת</span><span data-l="ru">СМИ</span></span></label>
+              <label class="chip"><input type="radio" name="inquiry" value="Collaboration"><span><span data-l="en">Collaboration</span><span data-l="he">שיתוף פעולה</span><span data-l="ru">Сотрудничество</span></span></label>
+              <label class="chip"><input type="radio" name="inquiry" value="Other"><span><span data-l="en">Other</span><span data-l="he">אחר</span><span data-l="ru">Другое</span></span></label>
             </fieldset>
 
             <div class="field">
-              <label for="f-name"><span data-l="en">Full name</span><span data-l="he">שם מלא</span></label>
+              <label for="f-name"><span data-l="en">Full name</span><span data-l="he">שם מלא</span><span data-l="ru">Имя и фамилия</span></label>
               <input id="f-name" name="name" type="text" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="f-email"><span data-l="en">Email</span><span data-l="he">אימייל</span></label>
+              <label for="f-email"><span data-l="en">Email</span><span data-l="he">אימייל</span><span data-l="ru">Эл. почта</span></label>
               <input id="f-email" name="email" type="email" autocomplete="email" required>
             </div>
             <div class="field">
-              <label for="f-org"><span data-l="en">Organization</span><span data-l="he">ארגון</span></label>
+              <label for="f-org"><span data-l="en">Organization</span><span data-l="he">ארגון</span><span data-l="ru">Организация</span></label>
               <input id="f-org" name="organization" type="text" autocomplete="organization">
             </div>
             <div class="field">
-              <label for="f-phone"><span data-l="en">Phone</span><span data-l="he">טלפון</span></label>
+              <label for="f-phone"><span data-l="en">Phone</span><span data-l="he">טלפון</span><span data-l="ru">Телефон</span></label>
               <input id="f-phone" name="phone" type="tel" autocomplete="tel">
             </div>
 
             <div class="event-only" id="event-fields">
               <div class="field">
-                <label for="f-date"><span data-l="en">Event date</span><span data-l="he">תאריך האירוע</span></label>
+                <label for="f-date"><span data-l="en">Event date</span><span data-l="he">תאריך האירוע</span><span data-l="ru">Дата мероприятия</span></label>
                 <input id="f-date" name="event_date" type="date">
               </div>
               <div class="field">
-                <label for="f-location"><span data-l="en">Location</span><span data-l="he">מיקום</span></label>
-                <input id="f-location" name="location" type="text" data-ph-en="City, country" data-ph-he="עיר, מדינה">
+                <label for="f-location"><span data-l="en">Location</span><span data-l="he">מיקום</span><span data-l="ru">Место</span></label>
+                <input id="f-location" name="location" type="text" data-ph-en="City, country" data-ph-he="עיר, מדינה" data-ph-ru="Город, страна">
               </div>
               <div class="field">
-                <label for="f-audience"><span data-l="en">Audience</span><span data-l="he">קהל</span></label>
+                <label for="f-audience"><span data-l="en">Audience</span><span data-l="he">קהל</span><span data-l="ru">Аудитория</span></label>
                 <select id="f-audience" name="audience">
-                  <option value="" data-en="Select…" data-he="בחרו…"></option>
-                  <option value="Company / team" data-en="Company / team" data-he="חברה / צוות"></option>
-                  <option value="Conference" data-en="Conference" data-he="כנס"></option>
-                  <option value="Jewish community abroad" data-en="Jewish community abroad" data-he="קהילה יהודית בחו״ל"></option>
-                  <option value="University / campus" data-en="University / campus" data-he="אוניברסיטה / קמפוס"></option>
-                  <option value="Youth / school / pre-army" data-en="Youth / school / pre-army" data-he="נוער / בית ספר / מכינה"></option>
-                  <option value="Government / diplomatic" data-en="Government / diplomatic" data-he="ממשלתי / דיפלומטי"></option>
-                  <option value="Other" data-en="Other" data-he="אחר"></option>
+                  <option value="" data-en="Select…" data-he="בחרו…" data-ru="Выберите…"></option>
+                  <option value="Company / team" data-en="Company / team" data-he="חברה / צוות" data-ru="Компания / команда"></option>
+                  <option value="Conference" data-en="Conference" data-he="כנס" data-ru="Конференция"></option>
+                  <option value="Jewish community abroad" data-en="Jewish community abroad" data-he="קהילה יהודית בחו״ל" data-ru="Еврейская община за рубежом"></option>
+                  <option value="University / campus" data-en="University / campus" data-he="אוניברסיטה / קמפוס" data-ru="Университет / кампус"></option>
+                  <option value="Youth / school / pre-army" data-en="Youth / school / pre-army" data-he="נוער / בית ספר / מכינה" data-ru="Молодёжь / школа / подготовка к армии"></option>
+                  <option value="Government / diplomatic" data-en="Government / diplomatic" data-he="ממשלתי / דיפלומטי" data-ru="Госструктуры / дипломатия"></option>
+                  <option value="Other" data-en="Other" data-he="אחר" data-ru="Другое"></option>
                 </select>
               </div>
               <div class="field">
-                <label for="f-size"><span data-l="en">Audience size</span><span data-l="he">גודל הקהל</span></label>
+                <label for="f-size"><span data-l="en">Audience size</span><span data-l="he">גודל הקהל</span><span data-l="ru">Размер аудитории</span></label>
                 <select id="f-size" name="audience_size">
-                  <option value="" data-en="Select…" data-he="בחרו…"></option>
-                  <option value="Up to 50" data-en="Up to 50" data-he="עד 50"></option>
-                  <option value="50–200" data-en="50–200" data-he="50–200"></option>
-                  <option value="200–500" data-en="200–500" data-he="200–500"></option>
-                  <option value="500+" data-en="500+" data-he="500+"></option>
+                  <option value="" data-en="Select…" data-he="בחרו…" data-ru="Выберите…"></option>
+                  <option value="Up to 50" data-en="Up to 50" data-he="עד 50" data-ru="До 50"></option>
+                  <option value="50–200" data-en="50–200" data-he="50–200" data-ru="50–200"></option>
+                  <option value="200–500" data-en="200–500" data-he="200–500" data-ru="200–500"></option>
+                  <option value="500+" data-en="500+" data-he="500+" data-ru="500+"></option>
                 </select>
               </div>
             </div>
 
             <div class="field field--full">
-              <label for="f-msg"><span data-l="en">Message</span><span data-l="he">הודעה</span></label>
-              <textarea id="f-msg" name="message" rows="5" required data-ph-en="Tell us about your event or request…" data-ph-he="ספרו לנו על האירוע או הבקשה…"></textarea>
+              <label for="f-msg"><span data-l="en">Message</span><span data-l="he">הודעה</span><span data-l="ru">Сообщение</span></label>
+              <textarea id="f-msg" name="message" rows="5" required data-ph-en="Tell us about your event or request…" data-ph-he="ספרו לנו על האירוע או הבקשה…" data-ph-ru="Расскажите о мероприятии или запросе…"></textarea>
             </div>
 
             <div class="hp" aria-hidden="true"><label>Leave empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
             <div class="form-foot">
-              <button class="btn btn--light" type="submit"><span data-l="en">Send inquiry</span><span data-l="he">שליחה</span> <span class="arrow" aria-hidden="true">→</span></button>
+              <button class="btn btn--light" type="submit"><span data-l="en">Send inquiry</span><span data-l="he">שליחה</span><span data-l="ru">Отправить</span> <span class="arrow" aria-hidden="true">→</span></button>
               <p class="form-status" id="form-status" role="status"></p>
             </div>
           </form>
@@ -672,20 +691,21 @@
   <footer class="footer">
     <div class="wrap">
       <div>
-        <span class="brand-name"><span data-l="en">Eliana Sachs</span><span data-l="he">אליענה זקס</span></span>
-        <p><span data-l="en">The official website of Eliana Sachs, maintained by her team.</span><span data-l="he">האתר הרשמי של אליענה זקס, מנוהל על ידי הצוות שלה.</span></p>
+        <span class="brand-name"><span data-l="en">Eliana Sachs</span><span data-l="he">אליענה זקס</span><span data-l="ru">Элиана Закс</span></span>
+        <p><span data-l="en">The official website of Eliana Sachs, maintained by her team.</span><span data-l="he">האתר הרשמי של אליענה זקס, מנוהל על ידי הצוות שלה.</span><span data-l="ru">Официальный сайт Элианы Закс, который ведёт её команда.</span></p>
       </div>
       <div class="footer-links">
-        <a href="https://yasharwitheisenkot.com/doryashar/" target="_blank" rel="noopener"><span data-l="en">Dor Yashar!</span><span data-l="he">דור ישר!</span></a>
-        <a href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener"><span data-l="en">Yashar!</span><span data-l="he">ישר!</span></a>
+        <a href="https://yasharwitheisenkot.com/doryashar/" target="_blank" rel="noopener"><span data-l="en">Dor Yashar!</span><span data-l="he">דור ישר!</span><span data-l="ru">«Дор Яшар!»</span></a>
+        <a href="https://yasharwitheisenkot.com/" target="_blank" rel="noopener"><span data-l="en">Yashar!</span><span data-l="he">ישר!</span><span data-l="ru">«Яшар!»</span></a>
+        <a href="https://www.instagram.com/eliana.sachs/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@eliana.za" target="_blank" rel="noopener">TikTok</a>
         <a href="https://www.linkedin.com/in/eliana-sachs-1868572a1/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="js-instagram" href="#" target="_blank" rel="noopener" hidden>Instagram</a>
-        <a href="#speaking"><span data-l="en">Speaking</span><span data-l="he">הרצאות</span></a>
-        <a href="#contact"><span data-l="en">Contact</span><span data-l="he">צור קשר</span></a>
+        <a href="#speaking"><span data-l="en">Speaking</span><span data-l="he">הרצאות</span><span data-l="ru">Лекции</span></a>
+        <a href="#contact"><span data-l="en">Contact</span><span data-l="he">צור קשר</span><span data-l="ru">Контакты</span></a>
       </div>
       <div class="footer-bottom">
         <bdi dir="ltr">© <span id="year">2026</span> Eliana Sachs</bdi>
-        <span><span data-l="en">In memory of Michal &amp; Eitan Sachs</span><span data-l="he">לזכר מיכל ואיתן זקס ז"ל</span></span>
+        <span><span data-l="en">In memory of Michal &amp; Eitan Sachs</span><span data-l="he">לזכר מיכל ואיתן זקס ז"ל</span><span data-l="ru">В память о Михаль и Эйтане Закс</span></span>
       </div>
     </div>
   </footer>
