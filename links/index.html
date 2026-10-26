@@ -34,19 +34,19 @@
   * { box-sizing: border-box; }
   body { margin: 0; min-height: 100svh; background: var(--ink); color: #fff; font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
     background-image: radial-gradient(700px 500px at 90% 0%, rgba(100,185,225,.25), transparent 60%), radial-gradient(600px 500px at 0% 100%, rgba(20,80,220,.35), transparent 60%);
-    padding: max(28px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom)); }
+    padding: max(20px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom)); }
   main { max-width: 460px; margin: 0 auto; }
   .top { display: flex; justify-content: flex-end; }
   .lang { background: transparent; border: 1px solid rgba(255,255,255,.25); color: #fff; border-radius: 999px; padding: 8px 14px; font: 600 13px/1 inherit; font-family: inherit; cursor: pointer; }
   .profile { text-align: center; margin-top: 8px; }
-  .avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px var(--ink), 0 0 0 6px var(--sky); }
-  h1 { margin: 18px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+  .avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px var(--ink), 0 0 0 6px var(--sky); }
+  h1 { margin: 14px 0 0; font-size: 34px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
   h1 [data-l] > span { color: var(--sky); }
   .tag { margin: 8px 0 0; font-size: 18px; font-weight: 500; color: #dbe6f5; }
   .roles { margin: 10px 0 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
-  .links { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 10px; }
-  .links a { display: grid; grid-template-columns: 44px 1fr 20px; align-items: center; gap: 14px; min-height: 64px; padding: 10px 16px 10px 10px; border-radius: 20px; background: rgba(255,255,255,.07); color: #fff; text-decoration: none; transition: background .2s, transform .2s; }
-  html[dir="rtl"] .links a { padding: 10px 10px 10px 16px; }
+  .links { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; }
+  .links a { display: grid; grid-template-columns: 44px 1fr 20px; align-items: center; gap: 14px; min-height: 60px; padding: 8px 16px 8px 8px; border-radius: 20px; background: rgba(255,255,255,.07); color: #fff; text-decoration: none; transition: background .2s, transform .2s; }
+  html[dir="rtl"] .links a { padding: 8px 8px 8px 16px; }
   .links a:active { transform: scale(.98); }
   .links a:hover { background: rgba(255,255,255,.12); }
   .links a.primary { background: #fff; color: var(--ink); }
@@ -59,8 +59,9 @@
   .primary .txt small { color: #4f5d78; }
   .go { opacity: .6; }
   html[dir="rtl"] .go { transform: scaleX(-1); }
-  .foot { margin: 28px 0 0; text-align: center; font-size: 13px; color: #8fa3c8; }
-  .foot a { color: #fff; text-decoration: none; border-bottom: 1px solid var(--sky); }
+  .quote { margin: 22px 0 0; text-align: center; }
+  .quote blockquote { margin: 0; font-size: 16px; font-weight: 500; line-height: 1.45; color: #dbe6f5; }
+  .qm { display: block; height: 26px; font-size: 44px; line-height: 1; color: var(--sky); font-weight: 700; }
   .ltr { direction: ltr; unicode-bidi: isolate; }
   html[dir="rtl"] small.ltr { text-align: right; }
 </style>
@@ -111,7 +112,9 @@
       <svg class="go" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></a></li>
   </ul>
 
-  <p class="foot"><a class="ltr" href="/">elianasachs.com</a></p>
+  <figure class="quote">
+    <blockquote><span class="qm" aria-hidden="true">“</span><span data-l="he">הדור שלנו הוא לא הבטחה לעתיד.<br>אנחנו כאן עכשיו.</span><span data-l="en">Our generation is not a promise for the future.<br>We are here now.</span></blockquote>
+  </figure>
 </main>
 <script>
   document.getElementById('lang').addEventListener('click', function () {
