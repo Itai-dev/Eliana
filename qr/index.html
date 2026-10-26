@@ -19,8 +19,9 @@
 <style>
   :root { --ink:#091e5c; --blue:#1450dc; --sky:#64b9e1; --paper:#eff4f9; }
   * { box-sizing: border-box; }
-  html, body { height: 100%; }
-  body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+  html { background: #091e5c; overscroll-behavior: none; }
+  body { overscroll-behavior: none; }
+  body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
     padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
     background: var(--ink); color: #fff; font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
     background-image: radial-gradient(700px 500px at 85% 0%, rgba(100,185,225,.25), transparent 60%), radial-gradient(600px 500px at 0% 100%, rgba(20,80,220,.4), transparent 60%);

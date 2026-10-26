@@ -39,6 +39,8 @@
   :root { --ink:#091e5c; --ink-3:#113d9c; --blue:#1450dc; --sky:#64b9e1; --muted:#b3c4e3; }
   html[lang="he"] [data-l]:not([data-l="he"]), html[lang="en"] [data-l]:not([data-l="en"]), html[lang="ru"] [data-l]:not([data-l="ru"]) { display: none !important; }
   * { box-sizing: border-box; }
+  html { background: #091e5c; overscroll-behavior: none; }
+  body { overscroll-behavior: none; }
   body { margin: 0; min-height: 100svh; background: var(--ink); color: #fff; font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
     background-image: radial-gradient(700px 500px at 90% 0%, rgba(100,185,225,.25), transparent 60%), radial-gradient(600px 500px at 0% 100%, rgba(20,80,220,.35), transparent 60%);
     padding: max(20px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom)); }
