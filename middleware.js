@@ -38,6 +38,8 @@ export default async function middleware(request) {
   const url = new URL(request.url);
 
   if (PUBLIC.includes(url.pathname)) return;
+  // The QR app and the contact card are meant to be opened by anyone who scans.
+  if (/^\/(qr|links)(\/|$)/.test(url.pathname) || url.pathname === '/qr-sw.js') return;
 
   // Login form submission
   if (url.pathname === LOGIN_PATH && request.method === 'POST') {

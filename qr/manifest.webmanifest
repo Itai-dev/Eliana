@@ -1,0 +1,30 @@
+{
+ "name": "Eliana Sachs · QR",
+ "short_name": "Eliana QR",
+ "start_url": "/qr",
+ "scope": "/qr",
+ "display": "standalone",
+ "orientation": "portrait",
+ "background_color": "#091e5c",
+ "theme_color": "#091e5c",
+ "lang": "he",
+ "dir": "rtl",
+ "icons": [
+  {
+   "src": "/qr/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/qr/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  },
+  {
+   "src": "/qr/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

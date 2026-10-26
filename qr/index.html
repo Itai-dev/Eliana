@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eliana Sachs · QR</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#091e5c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Eliana QR">
+<link rel="manifest" href="/qr/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/qr/icon-180.png">
+<link rel="icon" href="/qr/icon-192.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#091e5c; --blue:#1450dc; --sky:#64b9e1; --paper:#eff4f9; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+    padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    background: var(--ink); color: #fff; font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(700px 500px at 85% 0%, rgba(100,185,225,.25), transparent 60%), radial-gradient(600px 500px at 0% 100%, rgba(20,80,220,.4), transparent 60%);
+    -webkit-user-select: none; user-select: none; }
+  .who { text-align: center; }
+  .who h1 { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
+  .who h1 span { color: var(--sky); }
+  .who p { margin: 6px 0 0; color: #b3c4e3; font-size: 15px; font-weight: 500; }
+  .card { width: min(86vw, 400px); background: #fff; border-radius: 32px; padding: 26px 26px 20px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); text-align: center; }
+  .qr-wrap { position: relative; width: 100%; aspect-ratio: 1; }
+  .qr-svg { display: block; width: 100%; height: 100%; shape-rendering: crispEdges; }
+  .badge { position: absolute; top: 50%; left: 50%; width: 21%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--ink); border: 5px solid #fff; display: grid; place-items: center; color: var(--sky); font-weight: 700; font-size: clamp(14px, 4.4vw, 20px); letter-spacing: -1px; }
+  .url { margin: 18px 0 0; font-size: clamp(22px, 6.4vw, 28px); font-weight: 700; color: var(--ink); letter-spacing: -0.01em; direction: ltr; }
+  .hint { margin: 0; color: #b3c4e3; font-size: 15px; text-align: center; }
+  .actions { display: flex; gap: 10px; width: min(86vw, 400px); }
+  .actions a, .actions button { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 16px; border-radius: 999px; font: 600 16px/1 inherit; font-family: inherit; text-decoration: none; cursor: pointer; }
+  .primary { background: #fff; color: var(--ink); border: 0; }
+  .ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.35); }
+  .install { display: none; width: min(86vw, 400px); margin: 0; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.08); color: #dbe6f5; font-size: 14px; line-height: 1.45; text-align: center; }
+  .install.show { display: block; }
+  .en { display: block; color: #8fa3c8; font-size: 13px; margin-top: 2px; direction: ltr; }
+  .toast { position: fixed; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); background: #fff; color: var(--ink); padding: 12px 18px; border-radius: 999px; font-weight: 600; font-size: 15px; opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+  <header class="who">
+    <h1>אליענה <span>זקס</span></h1>
+    <p>מנהיגות של דור חדש · Eliana Sachs</p>
+  </header>
+
+  <main class="card">
+    <div class="qr-wrap">
+      <svg class="qr-svg" role="img" aria-label="QR code: elianasachs.com" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330"><path transform="scale(10)" stroke="#091e5c" d="M0 0.5h7m3 0h1m4 0h5m3 0h2m1 0h7m-33 1h1m5 0h1m1 0h1m6 0h1m2 0h1m1 0h2m2 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m5 0h4m1 0h2m2 0h1m4 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h3m2 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m5 0h1m1 0h1m2 0h3m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h3m4 0h2m1 0h1m1 0h1m-20 1h4m5 0h4m3 0h3m1 0h1m1 0h2m3 0h1m-28 1h2m1 0h4m1 0h2m2 0h2m2 0h2m1 0h2m2 0h1m3 0h1m-31 1h2m2 0h2m1 0h1m2 0h2m4 0h4m2 0h2m2 0h3m1 0h1m-31 1h3m8 0h1m1 0h1m4 0h1m2 0h4m2 0h1m2 0h1m-32 1h2m1 0h1m2 0h5m2 0h1m1 0h2m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m2 0h1m-33 1h3m2 0h1m1 0h1m2 0h3m3 0h2m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m-32 1h3m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m1 0h1m3 0h2m4 0h3m-30 1h1m1 0h2m1 0h3m1 0h3m1 0h1m2 0h4m1 0h1m1 0h4m2 0h1m-32 1h1m2 0h1m1 0h2m3 0h2m3 0h5m1 0h1m4 0h1m1 0h1m-29 1h1m1 0h3m2 0h1m1 0h2m1 0h1m3 0h1m1 0h2m3 0h3m1 0h1m3 0h1m-31 1h6m3 0h3m1 0h2m1 0h3m1 0h4m2 0h1m1 0h1m1 0h1m-32 1h1m1 0h3m3 0h1m1 0h1m3 0h1m1 0h1m3 0h2m9 0h1m-31 1h2m2 0h2m1 0h1m5 0h1m1 0h1m2 0h1m1 0h2m1 0h3m1 0h2m1 0h1m-32 1h1m1 0h2m4 0h1m1 0h2m1 0h2m2 0h2m2 0h1m3 0h3m1 0h1m1 0h1m-30 1h1m2 0h7m1 0h1m1 0h2m2 0h1m1 0h1m6 0h2m1 0h1m-29 1h1m3 0h1m2 0h2m2 0h1m1 0h7m1 0h1m2 0h1m3 0h2m-33 1h2m3 0h2m2 0h1m1 0h3m2 0h1m3 0h9m2 0h2m-25 1h3m1 0h1m5 0h1m5 0h1m3 0h1m1 0h2m-32 1h7m1 0h1m1 0h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m4 0h3m1 0h1m2 0h1m3 0h2m1 0h2m-33 1h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h4m1 0h1m3 0h5m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h2m1 0h1m1 0h5m2 0h3m3 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h1m-31 1h1m5 0h1m2 0h3m3 0h4m1 0h1m1 0h7m-29 1h7m5 0h3m1 0h1m1 0h2m2 0h4m1 0h1m1 0h1m2 0h1"/></svg>
+
+      <div class="badge" aria-hidden="true">ES</div>
+    </div>
+    <p class="url">elianasachs.com</p>
+  </main>
+
+  <p class="hint">סרקו כדי לקבל את כל הפרטים<span class="en">Scan to get all my details</span></p>
+
+  <div class="actions">
+    <a class="primary" href="/links">כרטיס · Card</a>
+    <button class="ghost" type="button" id="share">שיתוף · Share</button>
+  </div>
+
+  <p class="install" id="install">כדי לשמור כאפליקציה: לחצו על <b>שיתוף</b> בספארי ואז <b>"הוסף למסך הבית"</b>.<span class="en">To save as an app: tap Share in Safari, then "Add to Home Screen".</span></p>
+  <div class="toast" id="toast">הקישור הועתק · Link copied</div>
+
+<script>
+  var LINK = 'https://elianasachs.com/links';
+  document.getElementById('share').addEventListener('click', function () {
+    if (navigator.share) { navigator.share({ title: 'Eliana Sachs · אליענה זקס', url: LINK }).catch(function () {}); return; }
+    (navigator.clipboard ? navigator.clipboard.writeText(LINK) : Promise.reject()).then(function () {
+      var t = document.getElementById('toast'); t.classList.add('show'); setTimeout(function () { t.classList.remove('show'); }, 1800);
+    }).catch(function () { prompt('Link', LINK); });
+  });
+  var standalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (ios && !standalone) document.getElementById('install').classList.add('show');
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/qr-sw.js', { scope: '/qr' }).catch(function () {});
+  // keep the screen awake while showing the code, where supported
+  if ('wakeLock' in navigator) { var lock = function () { navigator.wakeLock.request('screen').catch(function () {}); }; lock(); document.addEventListener('visibilitychange', function () { if (!document.hidden) lock(); }); }
+</script>
+</body>
+</html>
