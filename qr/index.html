@@ -62,12 +62,17 @@
   .toast.show { opacity: 1; }
 
   /* Intro: everything comes in together; the QR fills in square by square while the card arrives. */
-  html.intro:not(.done) .qr-svg > path { opacity: 0; }
-  html.intro .who { animation: up .6s both cubic-bezier(.2,.8,.2,1); }
-  html.intro .card { animation: cardIn .75s .05s both cubic-bezier(.2,.9,.25,1); }
-  html.intro .badge { animation: badgeIn .5s .2s both cubic-bezier(.2,.9,.25,1); }
-  html.intro .url { animation: up .55s .35s both cubic-bezier(.2,.8,.2,1); }
-  html.intro .hint, html.intro .actions, html.intro .install { animation: up .55s .45s both cubic-bezier(.2,.8,.2,1); }
+  html.go:not(.done) .qr-svg > path { opacity: 0; }
+  html.go .who { animation: up .6s both cubic-bezier(.2,.8,.2,1); }
+  html.go .card { animation: cardIn .75s .05s both cubic-bezier(.2,.9,.25,1); }
+  html.go .badge { animation: badgeIn .5s .2s both cubic-bezier(.2,.9,.25,1); }
+  html.go .url { animation: up .55s .35s both cubic-bezier(.2,.8,.2,1); }
+  html.go .hint, html.go .actions, html.go .install { animation: up .55s .45s both cubic-bezier(.2,.8,.2,1); }
+  /* A quick fade from black so the app's launch screen hands over smoothly. */
+  .veil { display: none; position: fixed; inset: 0; z-index: 10; background: #000; pointer-events: none; }
+  html.intro .veil { display: block; animation: veil .5s 3s ease-out forwards; }   /* safety net if the start signal never comes */
+  html.go .veil { animation: veil .45s ease-out forwards; }
+  @keyframes veil { to { opacity: 0; visibility: hidden; } }
   @keyframes up { from { opacity: 0; transform: translateY(14px); } }
   @keyframes cardIn { from { opacity: 0; transform: translateY(50px) scale(.92); } }
   @keyframes badgeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(.4); } }
@@ -78,6 +83,7 @@
 </script>
 </head>
 <body>
+  <div class="veil" aria-hidden="true"></div>
   <div class="lights" aria-hidden="true"><span class="light l1"></span><span class="light l2"></span><span class="light l3"></span></div>
 
   <header class="who">
@@ -109,9 +115,16 @@
   var root = document.documentElement;
   var still = !root.classList.contains('intro');
 
+  // Start everything only once the font is in and the page has painted, so nothing jumps mid-animation.
+  function whenReady(cb) {
+    var done = false, go = function () { if (done) return; done = true; requestAnimationFrame(function () { requestAnimationFrame(cb); }); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go, go);
+    setTimeout(go, 700);
+  }
+
   // Intro: draw the QR on a canvas, filling in the squares one after another from the center outwards.
-  (function () {
-    if (still) return;
+  if (!still) whenReady(function () {
+    root.classList.add('go');
     var wrap = document.querySelector('.qr-wrap'), path = wrap.querySelector('.qr-svg path');
     var d = path.getAttribute('d'), re = /([Mmh])\s*(-?[\d.]+)(?:\s+(-?[\d.]+))?/g, m, x = 0, y = 0, mods = [], max = 0;
     while ((m = re.exec(d))) {
@@ -145,7 +158,7 @@
     }
     requestAnimationFrame(frame);
     setTimeout(finish, START + SPREAD + DUR + 1500);   // safety net if frames are paused
-  })();
+  });
 
   // Tilt: the card follows the mouse, or the phone's movement.
   (function () {
