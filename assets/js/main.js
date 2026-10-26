@@ -156,7 +156,7 @@ const MEDIA = [
       return `<li class="media-item"${hidden ? ' hidden' : ''}>
         <a href="${m.url}" target="_blank" rel="noopener">
           <span class="media-date">${m.date[lang]}</span>
-          <span class="media-outlet">${m.outlet}<small>${m.kind[lang]}</small></span>
+          <span class="media-outlet"><bdi>${m.outlet}</bdi><small>${m.kind[lang]}</small></span>
           <span class="media-title">${m.title[lang]}<span class="lang-note">${m.lang}</span></span>
           <span class="media-go">${arrow}</span>
         </a></li>`;
