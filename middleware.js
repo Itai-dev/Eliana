@@ -77,7 +77,7 @@ function loginPage(next, failed) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Eliana Sachs · אליענה זקס</title>
-<meta property="og:title" content="Eliana Sachs — Turning loss into leadership">
+<meta property="og:title" content="Eliana Sachs — From obstacles to opportunities">
 <meta property="og:image" content="https://elianasachs.com/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#091e5c">

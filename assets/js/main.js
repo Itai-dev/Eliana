@@ -178,13 +178,34 @@ const MEDIA = [
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Mobile menu: full screen, and the page behind it can't scroll (works on iOS too)
   const menuBtn = $('.menu-btn');
-  const closeMenu = () => { document.body.classList.remove('menu-open'); menuBtn.setAttribute('aria-expanded', 'false'); };
-  menuBtn.addEventListener('click', () => {
-    const open = document.body.classList.toggle('menu-open');
-    menuBtn.setAttribute('aria-expanded', String(open));
-  });
-  $$('.nav a').forEach(a => a.addEventListener('click', closeMenu));
+  let lockedY = 0;
+  const openMenu = () => {
+    lockedY = window.scrollY;
+    document.body.style.top = -lockedY + 'px';
+    root.classList.add('menu-lock');
+    document.body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+  };
+  const closeMenu = (jumpTo) => {
+    if (!document.body.classList.contains('menu-open')) return;
+    document.body.classList.remove('menu-open');
+    root.classList.remove('menu-lock');
+    document.body.style.top = '';
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, lockedY);
+    root.style.scrollBehavior = '';
+    menuBtn.setAttribute('aria-expanded', 'false');
+    if (jumpTo) { const el = $(jumpTo); if (el) el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' }); }
+  };
+  menuBtn.addEventListener('click', () => (document.body.classList.contains('menu-open') ? closeMenu() : openMenu()));
+  $$('.nav a').forEach(a => a.addEventListener('click', e => {
+    if (!document.body.classList.contains('menu-open')) return;
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) { e.preventDefault(); closeMenu(href); } else closeMenu();
+  }));
+  window.addEventListener('resize', () => { if (window.innerWidth > 1060) closeMenu(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
 
   // Active nav link
