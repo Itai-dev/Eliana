@@ -297,6 +297,13 @@ const MEDIA = [
     const r = $(`input[name="inquiry"][value="${map[a.dataset.inquiry]}"]`, form);
     if (r) { r.checked = true; syncInquiry(); }
   }));
+  // …and so does ?inquiry=lecture in the address (used by the /links card)
+  {
+    const map = { lecture: 'Lecture booking', media: 'Media' };
+    const want = map[new URLSearchParams(location.search).get('inquiry')];
+    const r = want && $(`input[name="inquiry"][value="${want}"]`, form);
+    if (r) { r.checked = true; syncInquiry(); }
+  }
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
