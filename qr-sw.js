@@ -1,5 +1,5 @@
 // Keeps /qr working offline once it has been opened.
-const CACHE = 'eliana-qr-v1';
+const CACHE = 'eliana-qr-v2';
 const FILES = ['/qr', '/qr/manifest.webmanifest', '/qr/icon-180.png', '/qr/icon-192.png', '/qr/icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
