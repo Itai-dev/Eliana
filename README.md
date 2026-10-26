@@ -5,7 +5,7 @@ Official website of Eliana Sachs (אליענה זקס). Plain HTML/CSS/JS — no
 ## Before launch
 
 1. **Photos** — add them to `assets/img/` (names and sizes in `assets/img/README.md`). Until then the site shows an "ES" monogram.
-2. **Email** — create `contact@elianasachs.com` (or change `email` at the top of `assets/js/main.js`).
+2. **Email** — inquiries go to `elianazmae@gmail.com` (change `email` at the top of `assets/js/main.js`).
 3. **Contact form (optional)** — by default it opens the visitor's email app pre-filled. To receive submissions directly, make a free form at formspree.io and paste its URL into `formEndpoint` in `assets/js/main.js`.
 4. **Instagram (optional)** — paste the profile URL into `instagram` in the same file.
 
