@@ -115,6 +115,7 @@ function loginPage(next, failed) {
     <form method="post" action="${LOGIN_PATH}">
       <input type="password" name="password" placeholder="סיסמה · Password" autocomplete="current-password" autofocus required>
       <input type="hidden" name="next" value="${esc(next)}">
+      <script>if (location.hash) document.currentScript.previousElementSibling.value += location.hash;</script>
       <button type="submit">כניסה · Enter</button>
       ${failed ? '<p class="err">הסיסמה שגויה · Wrong password</p>' : ''}
     </form>
