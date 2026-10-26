@@ -245,13 +245,13 @@ html[lang="he"] .statement p { letter-spacing: 0; line-height: 1.2; }
 @media (max-width: 860px) { .statement--photo .wrap { grid-template-columns: 1fr; } .statement-photo { max-width: 480px; } }
 
 /* Facts */
-.facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .fact { background: var(--paper); border-radius: var(--r-md); padding: 30px 28px; }
 .fact-num { font-size: clamp(44px, 4.6vw, 64px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
 html[dir="rtl"] .fact-num { direction: ltr; text-align: right; }
 .fact-num small { font-size: 0.45em; color: var(--blue); letter-spacing: 0; }
 .fact p { margin: 14px 0 0; color: var(--muted); font-size: 15px; font-weight: 500; line-height: 1.5; }
-@media (max-width: 860px) { .facts { grid-template-columns: 1fr 1fr; gap: 10px; } .fact { padding: 22px 20px; } }
+@media (max-width: 860px) { .facts { grid-template-columns: 1fr 1fr; gap: 10px; } .fact { padding: 22px 20px; } .fact:last-child:nth-child(odd) { grid-column: 1 / -1; } }
 
 /* ---------- Story ---------- */
 .story-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(40px, 7vw, 110px); align-items: start; }
