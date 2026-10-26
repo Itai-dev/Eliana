@@ -17,22 +17,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --ink:#091e5c; --blue:#1450dc; --sky:#64b9e1; --paper:#eff4f9; }
+  :root { --ink:#091e5c; --blue:#1450dc; --sky:#64b9e1; --paper:#eff4f9; --px:0; --py:0; }
   * { box-sizing: border-box; }
   html { background: #091e5c; overscroll-behavior: none; }
-  body { overscroll-behavior: none; }
-  body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+  body { margin: 0; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; overscroll-behavior: none; overflow-x: hidden;
     padding: max(24px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
     background: var(--ink); color: #fff; font-family: "Google Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased;
-    background-image: radial-gradient(700px 500px at 85% 0%, rgba(100,185,225,.25), transparent 60%), radial-gradient(600px 500px at 0% 100%, rgba(20,80,220,.4), transparent 60%);
     -webkit-user-select: none; user-select: none; }
+
+  /* Background lights: soft blue glows that drift slowly, and shift a little with the tilt. */
+  .lights { position: fixed; inset: -15%; z-index: 0; pointer-events: none; transform: translate3d(calc(var(--px) * -18px), calc(var(--py) * -18px), 0); }
+  .light { position: absolute; border-radius: 50%; will-change: transform; }
+  .l1 { width: 90vmax; height: 90vmax; top: -30vmax; right: -25vmax; background: radial-gradient(closest-side, rgba(100,185,225,.34), rgba(100,185,225,0)); animation: drift1 16s ease-in-out infinite alternate; }
+  .l2 { width: 95vmax; height: 95vmax; bottom: -35vmax; left: -30vmax; background: radial-gradient(closest-side, rgba(20,80,220,.55), rgba(20,80,220,0)); animation: drift2 20s ease-in-out infinite alternate; }
+  .l3 { width: 60vmax; height: 60vmax; top: 30%; left: 20%; background: radial-gradient(closest-side, rgba(100,185,225,.16), rgba(100,185,225,0)); animation: drift3 24s ease-in-out infinite alternate; }
+  @keyframes drift1 { to { transform: translate3d(-22vmax, 26vmax, 0) scale(1.1); } }
+  @keyframes drift2 { to { transform: translate3d(26vmax, -20vmax, 0) scale(.92); } }
+  @keyframes drift3 { from { transform: translate3d(-18vmax, -14vmax, 0); } to { transform: translate3d(16vmax, 18vmax, 0) scale(1.2); } }
+  .who, .stage, .hint, .actions, .install { position: relative; z-index: 1; }
+
   .who { text-align: center; }
   .who h1 { margin: 0; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
   .who h1 span { color: var(--sky); }
   .who p { margin: 6px 0 0; color: #b3c4e3; font-size: 15px; font-weight: 500; }
-  .card { width: min(86vw, 400px); background: #fff; border-radius: 32px; padding: 26px 26px 20px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); text-align: center; }
+  .stage { perspective: 1000px; }
+  .tilt { transform: rotateX(calc(var(--py) * -9deg)) rotateY(calc(var(--px) * 9deg)); transform-style: preserve-3d; will-change: transform; }
+  .card { width: min(86vw, 400px); background: #fff; border-radius: 32px; padding: 26px 26px 20px; text-align: center;
+    box-shadow: calc(var(--px) * -14px) calc(30px + var(--py) * -14px) 60px -30px rgba(0,0,0,.65); }
   .qr-wrap { position: relative; width: 100%; aspect-ratio: 1; }
   .qr-svg { display: block; width: 100%; height: 100%; shape-rendering: crispEdges; }
+  .qr-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   .badge { position: absolute; top: 50%; left: 50%; width: 21%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: var(--ink); border: 5px solid #fff; display: grid; place-items: center; color: var(--sky); }
   .badge svg { height: 62%; width: auto; display: block; }
   .url { margin: 18px 0 0; font-size: clamp(22px, 6.4vw, 28px); font-weight: 700; color: var(--ink); letter-spacing: -0.01em; direction: ltr; }
@@ -40,38 +54,38 @@
   .actions { display: flex; gap: 10px; width: min(86vw, 400px); }
   .actions a, .actions button { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 16px; border-radius: 999px; font: 600 16px/1 inherit; font-family: inherit; text-decoration: none; cursor: pointer; }
   .primary { background: #fff; color: var(--ink); border: 0; }
-  .ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.35); }
+  .ghost { background: rgba(9,30,92,.25); color: #fff; border: 1.5px solid rgba(255,255,255,.35); }
   .install { display: none; width: min(86vw, 400px); margin: 0; padding: 14px 16px; border-radius: 18px; background: rgba(255,255,255,.08); color: #dbe6f5; font-size: 14px; line-height: 1.45; text-align: center; }
   .install.show { display: block; }
   .en { display: block; color: #8fa3c8; font-size: 13px; margin-top: 2px; direction: ltr; }
-  .toast { position: fixed; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); background: #fff; color: var(--ink); padding: 12px 18px; border-radius: 999px; font-weight: 600; font-size: 15px; opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .toast { position: fixed; z-index: 2; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); background: #fff; color: var(--ink); padding: 12px 18px; border-radius: 999px; font-weight: 600; font-size: 15px; opacity: 0; transition: opacity .3s; pointer-events: none; }
   .toast.show { opacity: 1; }
 
-  /* Intro: the card slides in, the Yashar! mark pops in the center, and the QR ripples out from it. */
-  .mods rect { fill: var(--ink); }
-  html.intro .qr-svg > path { opacity: 0; }
-  html.intro.done .qr-svg > path { opacity: 1; }
-  html.intro .mods rect { transform-box: fill-box; transform-origin: center; animation: pop .45s both cubic-bezier(.3,1.6,.5,1); animation-delay: calc(750ms + var(--d) * 20ms); }
+  /* Intro: everything comes in together; the QR fills in square by square while the card arrives. */
+  html.intro:not(.done) .qr-svg > path { opacity: 0; }
   html.intro .who { animation: up .6s both cubic-bezier(.2,.8,.2,1); }
-  html.intro .card { animation: cardIn .8s .1s both cubic-bezier(.2,.9,.25,1); }
-  html.intro .badge { animation: badgeIn .55s .55s both cubic-bezier(.3,1.5,.5,1); }
-  html.intro .url { animation: up .5s 1.3s both cubic-bezier(.2,.8,.2,1); }
-  html.intro .hint, html.intro .actions, html.intro .install { animation: up .5s 1.45s both cubic-bezier(.2,.8,.2,1); }
+  html.intro .card { animation: cardIn .75s .05s both cubic-bezier(.2,.9,.25,1); }
+  html.intro .badge { animation: badgeIn .5s .2s both cubic-bezier(.2,.9,.25,1); }
+  html.intro .url { animation: up .55s .35s both cubic-bezier(.2,.8,.2,1); }
+  html.intro .hint, html.intro .actions, html.intro .install { animation: up .55s .45s both cubic-bezier(.2,.8,.2,1); }
   @keyframes up { from { opacity: 0; transform: translateY(14px); } }
-  @keyframes cardIn { from { opacity: 0; transform: translateY(60px) scale(.9); } }
-  @keyframes pop { from { opacity: 0; transform: scale(0) rotate(90deg); } }
-  @keyframes badgeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0); } }
+  @keyframes cardIn { from { opacity: 0; transform: translateY(50px) scale(.92); } }
+  @keyframes badgeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(.4); } }
+  @media (prefers-reduced-motion: reduce) { .light { animation: none; } .tilt, .lights { transform: none; } }
 </style>
 <script>
   try { if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro'); } catch (e) {}
 </script>
 </head>
 <body>
+  <div class="lights" aria-hidden="true"><span class="light l1"></span><span class="light l2"></span><span class="light l3"></span></div>
+
   <header class="who">
     <h1>אליענה <span>זקס</span></h1>
     <p>מנהיגות של דור חדש · Eliana Sachs</p>
   </header>
 
+  <div class="stage"><div class="tilt">
   <main class="card">
     <div class="qr-wrap">
       <svg class="qr-svg" role="img" aria-label="QR code: elianasachs.com" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 330"><path transform="scale(10)" stroke="#091e5c" d="M0 0.5h7m3 0h1m4 0h5m3 0h2m1 0h7m-33 1h1m5 0h1m1 0h1m6 0h1m2 0h1m1 0h2m2 0h1m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m5 0h4m1 0h2m2 0h1m4 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h3m2 0h1m1 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h2m2 0h1m2 0h1m2 0h2m2 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m5 0h1m1 0h1m2 0h3m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h1m2 0h3m4 0h2m1 0h1m1 0h1m-20 1h4m5 0h4m3 0h3m1 0h1m1 0h2m3 0h1m-28 1h2m1 0h4m1 0h2m2 0h2m2 0h2m1 0h2m2 0h1m3 0h1m-31 1h2m2 0h2m1 0h1m2 0h2m4 0h4m2 0h2m2 0h3m1 0h1m-31 1h3m8 0h1m1 0h1m4 0h1m2 0h4m2 0h1m2 0h1m-32 1h2m1 0h1m2 0h5m2 0h1m1 0h2m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m2 0h1m-33 1h3m2 0h1m1 0h1m2 0h3m3 0h2m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m-32 1h3m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m1 0h1m3 0h2m4 0h3m-30 1h1m1 0h2m1 0h3m1 0h3m1 0h1m2 0h4m1 0h1m1 0h4m2 0h1m-32 1h1m2 0h1m1 0h2m3 0h2m3 0h5m1 0h1m4 0h1m1 0h1m-29 1h1m1 0h3m2 0h1m1 0h2m1 0h1m3 0h1m1 0h2m3 0h3m1 0h1m3 0h1m-31 1h6m3 0h3m1 0h2m1 0h3m1 0h4m2 0h1m1 0h1m1 0h1m-32 1h1m1 0h3m3 0h1m1 0h1m3 0h1m1 0h1m3 0h2m9 0h1m-31 1h2m2 0h2m1 0h1m5 0h1m1 0h1m2 0h1m1 0h2m1 0h3m1 0h2m1 0h1m-32 1h1m1 0h2m4 0h1m1 0h2m1 0h2m2 0h2m2 0h1m3 0h3m1 0h1m1 0h1m-30 1h1m2 0h7m1 0h1m1 0h2m2 0h1m1 0h1m6 0h2m1 0h1m-29 1h1m3 0h1m2 0h2m2 0h1m1 0h7m1 0h1m2 0h1m3 0h2m-33 1h2m3 0h2m2 0h1m1 0h3m2 0h1m3 0h9m2 0h2m-25 1h3m1 0h1m5 0h1m5 0h1m3 0h1m1 0h2m-32 1h7m1 0h1m1 0h1m5 0h1m1 0h5m1 0h1m1 0h1m1 0h1m1 0h2m-32 1h1m5 0h1m1 0h5m4 0h3m1 0h1m2 0h1m3 0h2m1 0h2m-33 1h1m1 0h3m1 0h1m1 0h3m1 0h1m2 0h4m1 0h1m3 0h5m-29 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h2m1 0h1m1 0h5m2 0h3m3 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1m1 0h1m-31 1h1m5 0h1m2 0h3m3 0h4m1 0h1m1 0h7m-29 1h7m5 0h3m1 0h1m1 0h2m2 0h4m1 0h1m1 0h1m2 0h1"/></svg>
@@ -79,6 +93,7 @@
     </div>
     <p class="url">elianasachs.com</p>
   </main>
+  </div></div>
 
   <p class="hint">סרקו כדי לקבל את כל הפרטים<span class="en">Scan to get all my details</span></p>
 
@@ -91,31 +106,88 @@
   <div class="toast" id="toast">הקישור הועתק · Link copied</div>
 
 <script>
-  // Intro: split the QR path into single modules so they can pop in, rippling out from the center.
-  function playIntro() {
-    var root = document.documentElement;
-    if (!root.classList.contains('intro')) return;
-    var svg = document.querySelector('.qr-svg'), path = svg.querySelector('path');
-    var d = path.getAttribute('d'), re = /([Mmh])\s*(-?[\d.]+)(?:\s+(-?[\d.]+))?/g, m, x = 0, y = 0, max = 0;
-    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g'), html = '';
+  var root = document.documentElement;
+  var still = !root.classList.contains('intro');
+
+  // Intro: draw the QR on a canvas, filling in the squares one after another from the center outwards.
+  (function () {
+    if (still) return;
+    var wrap = document.querySelector('.qr-wrap'), path = wrap.querySelector('.qr-svg path');
+    var d = path.getAttribute('d'), re = /([Mmh])\s*(-?[\d.]+)(?:\s+(-?[\d.]+))?/g, m, x = 0, y = 0, mods = [], max = 0;
     while ((m = re.exec(d))) {
       var a = +m[2], b = +(m[3] || 0);
       if (m[1] === 'M') { x = a; y = b; }
       else if (m[1] === 'm') { x += a; y += b; }
-      else {
-        for (var i = 0; i < a; i++) {
-          var cx = x + i, cy = y - 0.5, dist = Math.round(Math.hypot(cx - 16, cy - 16));
-          if (dist > max) max = dist;
-          html += '<rect x="' + cx + '" y="' + cy + '" width="1.04" height="1.04" style="--d:' + dist + '"/>';
-        }
-        x += a;
-      }
+      else { for (var i = 0; i < a; i++) { var cx = x + i, cy = y - 0.5, dist = Math.hypot(cx - 16, cy - 16); mods.push([cx, cy, dist]); if (dist > max) max = dist; } x += a; }
     }
-    g.setAttribute('class', 'mods'); g.setAttribute('transform', 'scale(10)'); g.innerHTML = html;
-    svg.appendChild(g);
-    setTimeout(function () { root.classList.add('done'); g.remove(); }, 750 + max * 20 + 500);
-  }
-  playIntro();
+    var START = 120, SPREAD = 700, DUR = 240;
+    mods.forEach(function (q) { q[3] = START + (q[2] / max) * SPREAD + Math.random() * 50; });
+    var cv = document.createElement('canvas'); cv.className = 'qr-canvas';
+    wrap.insertBefore(cv, wrap.querySelector('.badge'));
+    var dpr = Math.min(window.devicePixelRatio || 1, 3), W = Math.round(wrap.clientWidth * dpr);
+    cv.width = cv.height = W;
+    var ctx = cv.getContext('2d'), s = W / 33, t0 = performance.now(), finished = false;
+    ctx.fillStyle = '#091e5c';
+    function finish() { if (finished) return; finished = true; root.classList.add('done'); cv.remove(); }
+    function frame(now) {
+      var t = now - t0, left = false;
+      ctx.clearRect(0, 0, W, W);
+      for (var i = 0; i < mods.length; i++) {
+        var q = mods[i], p = (t - q[3]) / DUR;
+        if (p <= 0) { left = true; continue; }
+        if (p > 1) p = 1; else left = true;
+        var e = 1 - Math.pow(1 - p, 3);            // ease-out
+        var x0 = Math.round(q[0] * s), y0 = Math.round(q[1] * s), w = Math.round((q[0] + 1) * s) - x0, h = Math.round((q[1] + 1) * s) - y0;
+        if (p < 1) { var k = 0.55 + 0.45 * e, dw = w * (1 - k) / 2, dh = h * (1 - k) / 2; ctx.globalAlpha = e; ctx.fillRect(x0 + dw, y0 + dh, w - 2 * dw, h - 2 * dh); }
+        else { ctx.globalAlpha = 1; ctx.fillRect(x0, y0, w, h); }
+      }
+      if (left) requestAnimationFrame(frame); else finish();
+    }
+    requestAnimationFrame(frame);
+    setTimeout(finish, START + SPREAD + DUR + 1500);   // safety net if frames are paused
+  })();
+
+  // Tilt: the card follows the mouse, or the phone's movement.
+  (function () {
+    if (still) return;
+    var tx = 0, ty = 0, cx = 0, cy = 0, running = false, card = document.querySelector('.card');
+    var clamp = function (v) { return v < -1 ? -1 : v > 1 ? 1 : v; };
+    function loop() {
+      cx += (tx - cx) * 0.09; cy += (ty - cy) * 0.09;
+      root.style.setProperty('--px', cx.toFixed(4)); root.style.setProperty('--py', cy.toFixed(4));
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) requestAnimationFrame(loop); else running = false;
+    }
+    function aim(x, y) { tx = clamp(x); ty = clamp(y); if (!running) { running = true; requestAnimationFrame(loop); } }
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      var r = card.getBoundingClientRect();
+      aim((e.clientX - (r.left + r.width / 2)) / (r.width * 0.75), (e.clientY - (r.top + r.height / 2)) / (r.height * 0.75));
+    });
+    document.addEventListener('pointerleave', function () { aim(0, 0); });
+    window.addEventListener('blur', function () { aim(0, 0); });
+
+    // Phone: the way it's held when the page opens counts as "straight"; that reference slowly follows along.
+    var base = null;
+    function onTilt(e) {
+      if (e.beta == null || e.gamma == null) return;
+      if (!base) base = { b: e.beta, g: e.gamma };
+      base.b += (e.beta - base.b) * 0.01; base.g += (e.gamma - base.g) * 0.01;
+      aim((e.gamma - base.g) / 18, (e.beta - base.b) / 18);
+    }
+    var DOE = window.DeviceOrientationEvent;
+    if (!DOE) return;
+    if (typeof DOE.requestPermission === 'function') {
+      // iPhone asks for permission once, after the first tap on the page (not on the buttons).
+      var ask = function (e) {
+        if (e.target.closest && e.target.closest('a, button')) return;
+        document.removeEventListener('click', ask);
+        DOE.requestPermission().then(function (st) { if (st === 'granted') window.addEventListener('deviceorientation', onTilt); }).catch(function () {});
+      };
+      document.addEventListener('click', ask);
+    } else {
+      window.addEventListener('deviceorientation', onTilt);
+    }
+  })();
 
   var LINK = 'https://elianasachs.com/links';
   document.getElementById('share').addEventListener('click', function () {
