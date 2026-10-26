@@ -261,6 +261,7 @@ html[lang="he"] .statement p { letter-spacing: 0; line-height: 1.2; }
 .memorial-head p { color: var(--muted-on-dark); margin: 12px 0 0; font-size: 15px; }
 .memorial-person { padding: 48px 44px; }
 .memorial-person + .memorial-person { border-inline-start: 1px solid var(--line-dark); }
+.memorial-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 22px; box-shadow: 0 0 0 3px var(--ink), 0 0 0 5px var(--sky); }
 .memorial-person h4 { font-size: 28px; color: var(--sky); }
 .memorial-person .rel { font-size: 14px; font-weight: 600; color: var(--muted-on-dark); margin: 6px 0 16px; }
 .memorial-person p { color: #dbe6f5; margin: 0; font-size: 16px; }
