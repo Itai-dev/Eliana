@@ -24,7 +24,7 @@ const MEDIA = [
     date: { en: 'Sep 2026', he: 'ספטמבר 2026' },
     outlet: 'The Jerusalem Post', kind: { en: 'Politics', he: 'פוליטיקה' },
     title: { en: 'Yashar party unveils youth platform targeting living costs and IDF pay', he: 'ישר! חושפת את תוכנית הצעירים: יוקר המחיה ושכר החיילים' },
-    url: 'https://www.jpost.com/israel-election-2026/article-910016', lang: 'EN', tags: ['politics', 'english'],
+    img: 'assets/img/press/1.webp', url: 'https://www.jpost.com/israel-election-2026/article-910016', lang: 'EN', tags: ['politics', 'english'],
   },
   {
     date: { en: 'Sep 2026', he: 'ספטמבר 2026' },
@@ -36,19 +36,19 @@ const MEDIA = [
     date: { en: 'Aug 2026', he: 'אוגוסט 2026' },
     outlet: 'Walla!', kind: { en: 'Podcast interview', he: 'ראיון פודקאסט' },
     title: { en: '"I\'ll give everything to make it good here" — Walla Ishi with Maor Ben Harosh', he: '"אתן הכל שיהיה פה טוב" — וואלה אישי עם מאור בן הרוש' },
-    url: 'https://celebs.walla.co.il/item/3861618', lang: 'HE', tags: ['interview', 'politics'],
+    img: 'assets/img/press/3.webp', url: 'https://celebs.walla.co.il/item/3861618', lang: 'HE', tags: ['interview', 'politics'],
   },
   {
     date: { en: 'Aug 2026', he: 'אוגוסט 2026' },
     outlet: 'Ynet', kind: { en: 'Interview', he: 'ראיון' },
     title: { en: 'Model Eliana Sachs enters politics: "I want to feel my tragedy was not in vain"', he: 'הדוגמנית אליענה זקס נכנסה לפוליטיקה: "רוצה להרגיש שהאסון שעברתי לא היה לחינם"' },
-    url: 'https://www.ynet.co.il/fashion/article/yokra14866260', lang: 'HE', tags: ['interview', 'politics'],
+    img: 'assets/img/press/4.webp', url: 'https://www.ynet.co.il/fashion/article/yokra14866260', lang: 'HE', tags: ['interview', 'politics'],
   },
   {
     date: { en: 'Aug 2026', he: 'אוגוסט 2026' },
     outlet: 'Walla!', kind: { en: 'Interview', he: 'ראיון' },
     title: { en: '"It gives me drive to prove otherwise" — on the reactions to her appointment', he: '"זה נותן לי דרייב להוכיח אחרת" — על התגובות למינוי' },
-    url: 'https://celebs.walla.co.il/item/3861678', lang: 'HE', tags: ['interview', 'politics'],
+    img: 'assets/img/press/5.webp', url: 'https://celebs.walla.co.il/item/3861678', lang: 'HE', tags: ['interview', 'politics'],
   },
   {
     date: { en: 'Jul 2026', he: 'יולי 2026' },
@@ -60,13 +60,13 @@ const MEDIA = [
     date: { en: 'Jul 2026', he: 'יולי 2026' },
     outlet: 'Walla!', kind: { en: 'First report', he: 'פרסום ראשון' },
     title: { en: 'Model Eliana Sachs, who lost her mother and brother in the war with Iran, joins Gadi Eisenkot', he: 'הדוגמנית אליענה זקס, שאיבדה את אמה ואחיה במלחמה מול איראן, מצטרפת לגדי איזנקוט' },
-    url: 'https://celebs.walla.co.il/item/3856386', lang: 'HE', tags: ['politics'],
+    img: 'assets/img/press/7.webp', url: 'https://celebs.walla.co.il/item/3856386', lang: 'HE', tags: ['politics'],
   },
   {
     date: { en: 'Jul 2026', he: 'יולי 2026' },
     outlet: 'Maariv', kind: { en: 'Politics', he: 'פוליטיקה' },
     title: { en: 'After losing her mother and brother: Eliana Sachs joins Gadi Eisenkot', he: 'אחרי שאיבדה את אמה ואחיה במלחמה מול איראן: הדוגמנית אליענה זקס מצטרפת לגדי איזנקוט' },
-    url: 'https://tmi.maariv.co.il/celebs-news/article-1349240', lang: 'HE', tags: ['politics'],
+    img: 'assets/img/press/8.webp', url: 'https://tmi.maariv.co.il/celebs-news/article-1349240', lang: 'HE', tags: ['politics'],
   },
   {
     date: { en: 'Jul 2026', he: 'יולי 2026' },
@@ -84,37 +84,37 @@ const MEDIA = [
     date: { en: 'Mar 2026', he: 'מרץ 2026' },
     outlet: 'Channel 12 News', kind: { en: 'TV interview · Morning News with Niv Raskin', he: 'ראיון טלוויזיה · חדשות הבוקר עם ניב רסקין' },
     title: { en: 'The model who lost her mother and brother in the previous attack — and this time her home was hit', he: 'הדוגמנית שאיבדה את אימה ואחיה במתקפה הקודמת — והפעם ביתה נפגע' },
-    url: 'https://www.mako.co.il/entertainment-celebs/local-2026/Article-b94efca0e56dc91026.htm', lang: 'HE', tags: ['interview'],
+    img: 'assets/img/press/11.webp', url: 'https://www.mako.co.il/entertainment-celebs/local-2026/Article-b94efca0e56dc91026.htm', lang: 'HE', tags: ['interview'],
   },
   {
     date: { en: 'Mar 2026', he: 'מרץ 2026' },
     outlet: 'Ynet News', kind: { en: 'Feature', he: 'כתבה' },
     title: { en: 'Her mother and brother were killed by an Iranian missile, now her home is hit: "Why would this happen to me twice?"', he: 'אמה ואחיה נהרגו מטיל איראני, ועכשיו ביתה נפגע' },
-    url: 'https://www.ynetnews.com/magazine/article/bj4czx3tzg', lang: 'EN', tags: ['interview', 'english'],
+    img: 'assets/img/press/12.webp', url: 'https://www.ynetnews.com/magazine/article/bj4czx3tzg', lang: 'EN', tags: ['interview', 'english'],
   },
   {
     date: { en: 'Oct 2025', he: 'אוקטובר 2025' },
     outlet: 'Ynet', kind: { en: 'Fashion Week', he: 'שבוע האופנה' },
     title: { en: 'A tribute on the runway: Eliana walks Shenkar\'s show in her brother Eitan\'s last design', he: 'מחווה על המסלול: אליענה צועדת בתצוגת שנקר בדגם האחרון של אחיה איתן' },
-    url: 'https://www.ynet.co.il/fashion/article/s1xyxyryk11x', lang: 'HE', tags: ['fashion'],
+    img: 'assets/img/press/13.webp', url: 'https://www.ynet.co.il/fashion/article/s1xyxyryk11x', lang: 'HE', tags: ['fashion'],
   },
   {
     date: { en: 'Oct 2025', he: 'אוקטובר 2025' },
     outlet: 'Ynet News', kind: { en: 'Weekend Magazine', he: 'מוסף סוף השבוע' },
     title: { en: '"Half my family was wiped out": Model Eliana Sachs rebuilds life after losing mother, brother to Iranian missile', he: '"חצי מהמשפחה שלי נמחקה" — הגרסה האנגלית' },
-    url: 'https://www.ynetnews.com/magazine/article/bkimh8oagx', lang: 'EN', tags: ['interview', 'fashion', 'english'],
+    img: 'assets/img/press/14.webp', url: 'https://www.ynetnews.com/magazine/article/bkimh8oagx', lang: 'EN', tags: ['interview', 'fashion', 'english'],
   },
   {
     date: { en: 'Oct 2025', he: 'אוקטובר 2025' },
     outlet: 'Ynet', kind: { en: 'Weekend Magazine', he: 'מוסף סוף השבוע' },
     title: { en: '"Half my family was wiped out. I wake up every morning with a hole in my heart"', he: 'אליענה זקס: "חצי מהמשפחה שלי נמחקה. אני מתעוררת בכל בוקר עם חור בלב"' },
-    url: 'https://www.ynet.co.il/fashion/article/b16ge48rex', lang: 'HE', tags: ['interview', 'fashion'],
+    img: 'assets/img/press/15.webp', url: 'https://www.ynet.co.il/fashion/article/b16ge48rex', lang: 'HE', tags: ['interview', 'fashion'],
   },
   {
     date: { en: 'Editorial', he: 'הפקה' },
     outlet: 'Fashion Gone Rogue', kind: { en: 'Fashion editorial', he: 'הפקת אופנה' },
     title: { en: '"Blue Your Mind" — Eliana Sachs by Shilat Mizrahi', he: '"Blue Your Mind" — אליענה זקס בעדשת שילת מזרחי' },
-    url: 'https://fashiongonerogue.com/eliana-sachs-shilat-mizrahi-exclusive', lang: 'EN', tags: ['fashion', 'english'],
+    img: 'assets/img/press/16.webp', url: 'https://fashiongonerogue.com/eliana-sachs-shilat-mizrahi-exclusive', lang: 'EN', tags: ['fashion', 'english'],
   },
 ];
 
@@ -153,8 +153,12 @@ const MEDIA = [
     const arrow = '<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 13L13 5M6 5h7v7"/></svg>';
     list.innerHTML = MEDIA.map(m => {
       const hidden = mediaFilter !== 'all' && !m.tags.includes(mediaFilter);
+      const thumb = m.img
+        ? `<img src="${m.img}" alt="" loading="lazy" width="640" height="360">`
+        : `<span class="media-thumb-fallback"><bdi>${m.outlet}</bdi></span>`;
       return `<li class="media-item"${hidden ? ' hidden' : ''}>
         <a href="${m.url}" target="_blank" rel="noopener">
+          <span class="media-thumb">${thumb}</span>
           <span class="media-date">${m.date[lang]}</span>
           <span class="media-outlet"><bdi>${m.outlet}</bdi><small>${m.kind[lang]}</small></span>
           <span class="media-title">${m.title[lang]}<span class="lang-note">${m.lang}</span></span>

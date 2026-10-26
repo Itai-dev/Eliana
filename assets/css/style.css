@@ -292,6 +292,11 @@ html[dir="rtl"] .fact-num { direction: ltr; text-align: right; }
 .worlds { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .world { background: var(--white); border-radius: var(--r-lg); padding: clamp(30px, 4vw, 52px); position: relative; transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
 .world:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -40px rgba(9, 30, 92, 0.35); }
+.world-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; }
+.world-logos { display: flex; align-items: center; gap: 18px; }
+.world-logo { height: 30px; width: auto; }
+.world-logo--square { height: 44px; }
+.world-logo--yashar { height: 26px; }
 .world-num { display: inline-grid; place-items: center; min-width: 44px; height: 44px; padding: 0 12px; border-radius: var(--pill); background: var(--paper); font-size: 15px; font-weight: 700; color: var(--blue); }
 .world h3 { margin: 22px 0 8px; font-size: clamp(28px, 2.8vw, 38px); font-weight: 700; }
 .world .role { font-size: 15px; font-weight: 600; color: var(--muted); margin: 0 0 22px; }
@@ -313,6 +318,10 @@ html[dir="rtl"] .fact-num { direction: ltr; text-align: right; }
 .platform--dor h4 { color: #cfe3fb; }
 .dor-title { font-size: clamp(32px, 3vw, 44px); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; color: var(--white) !important; margin: 0 0 12px !important; }
 .platform--dor em { color: var(--white); font-weight: 600; text-decoration: underline; text-decoration-color: var(--sky); text-underline-offset: 4px; }
+.dor-logo { width: 150px; height: auto; border-radius: var(--r-sm); margin: 4px 0 16px; box-shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.5); }
+.dor-photos { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 10px; margin-top: 20px; }
+.dor-photos img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-sm); }
+.dor-photos img:first-child { object-position: center 30%; }
 .dor-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 24px; }
 .text-link { color: var(--white); text-decoration: none; border-bottom: 1.5px solid var(--sky); font-size: 15px; font-weight: 600; padding-bottom: 2px; }
 .text-link:hover { color: var(--sky); }
@@ -373,8 +382,13 @@ html[lang="he"] .quote p { letter-spacing: 0; line-height: 1.18; }
 .media-filters button[aria-pressed="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
 .media-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .media-item[hidden] { display: none; }
-.media-item a { display: grid; grid-template-columns: 120px 220px 1fr 44px; gap: 24px; align-items: center; padding: 22px 26px; text-decoration: none; background: var(--white); border-radius: var(--r-md); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.media-item a { display: grid; grid-template-columns: 168px 110px 200px 1fr 44px; gap: 24px; align-items: center; padding: 14px 26px 14px 14px; text-decoration: none; background: var(--white); border-radius: var(--r-md); transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
 .media-item a:hover { transform: translateY(-2px); box-shadow: 0 24px 50px -36px rgba(9, 30, 92, 0.4); }
+html[dir="rtl"] .media-item a { padding: 14px 14px 14px 26px; }
+.media-thumb { display: block; aspect-ratio: 16 / 9; border-radius: var(--r-sm); overflow: hidden; background: var(--paper-2); }
+.media-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.media-item a:hover .media-thumb img { transform: scale(1.05); }
+.media-thumb-fallback { display: grid; place-items: center; width: 100%; height: 100%; padding: 8px; text-align: center; background: linear-gradient(135deg, var(--ink), var(--ink-3)); color: var(--white); font-size: 14px; font-weight: 700; line-height: 1.2; }
 .media-date { font-size: 14px; font-weight: 500; color: var(--muted); font-variant-numeric: tabular-nums; }
 .media-outlet { font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.3; }
 .media-outlet small { display: block; font-size: 13px; font-weight: 600; color: var(--blue); margin-top: 3px; }
@@ -384,11 +398,13 @@ html[lang="he"] .quote p { letter-spacing: 0; line-height: 1.18; }
 .media-item a:hover .media-go { background: var(--blue); color: var(--white); }
 html[dir="rtl"] .media-go svg { transform: scaleX(-1); }
 @media (max-width: 860px) {
-  .media-item a { grid-template-columns: 1fr 40px; gap: 6px 14px; padding: 20px; }
-  .media-date { grid-column: 1; order: 1; }
-  .media-outlet { grid-column: 1; order: 2; }
-  .media-title { grid-column: 1; order: 3; }
-  .media-go { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
+  .media-item a, html[dir="rtl"] .media-item a { grid-template-columns: 104px 1fr; gap: 4px 14px; padding: 12px; align-items: start; }
+  .media-thumb { grid-column: 1; grid-row: 1 / span 3; aspect-ratio: 1 / 1; align-self: start; }
+  .media-date { grid-column: 2; order: 1; font-size: 13px; }
+  .media-outlet { grid-column: 2; order: 2; }
+  .media-title { grid-column: 2; order: 3; }
+  .media-go { display: none; }
+  .media-thumb-fallback { font-size: 12px; }
 }
 .media-note { margin-top: 26px; font-size: 15px; color: var(--muted); }
 
@@ -493,6 +509,10 @@ html[dir="rtl"] .field select { background-position: left 16px center; }
   .world { padding: 26px 22px; border-radius: var(--r-md); }
   .world h3 { margin-top: 18px; font-size: 28px; }
   .world-num { min-width: 38px; height: 38px; font-size: 14px; }
+  .world-logo { height: 24px; }
+  .world-logo--square { height: 36px; }
+  .world-logo--yashar { height: 22px; }
+  .dor-logo { width: 120px; }
   .platform { padding: 22px 20px; border-radius: var(--r-sm); }
   .dor-cta { flex-direction: column; align-items: stretch; gap: 14px; }
   .dor-cta .btn { justify-content: center; }
@@ -512,7 +532,7 @@ html[dir="rtl"] .field select { background-position: left 16px center; }
   /* media */
   .media-filters { gap: 6px; margin-bottom: 22px; }
   .media-filters button { padding: 14px 16px; font-size: 14px; }
-  .media-item a { padding: 18px; border-radius: var(--r-sm); }
+  .media-item a { border-radius: var(--r-sm); }
   .media-outlet { font-size: 17px; }
   .media-title { font-size: 15px; }
   .media-go { width: 36px; height: 36px; }
