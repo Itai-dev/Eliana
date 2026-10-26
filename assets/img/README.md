@@ -2,7 +2,7 @@
 
 | File | Where it shows |
 |---|---|
-| `hero.webp` | Main portrait at the top (arched frame) |
+| `hero-cover.webp` | Full-width cover at the top (landscape) |
 | `eisenkot.webp` | Next to Gadi Eisenkot's quote |
 | `story.webp` | Next to "Her Story" |
 | `gallery-1.webp`, `gallery-2.webp` | "Portfolio" section (two tall portraits) |
