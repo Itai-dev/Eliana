@@ -5,7 +5,7 @@
 // ---------------------------------------------------------------
 const SETTINGS = {
   // Where inquiries go. Works immediately via the visitor's email app.
-  email: 'contact@elianasachs.com',
+  email: 'elianazmae@gmail.com',
 
   // Optional: paste a Formspree (https://formspree.io) form URL here,
   // e.g. 'https://formspree.io/f/abcdwxyz', and the form will send
