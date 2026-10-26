@@ -7,7 +7,7 @@
 // and paste the result into CHECK below.
 // To remove the password entirely, delete this file.
 
-const CHECK = '2e3b1719261def4beeaac172838cfa2dd59da7db24eaa5d9c3c40de6a657e917';
+const CHECK = '629fcc510629dcf9bf18d31ab0502f2c72f2975fa3ff15e2624042d13c0d5047';
 const COOKIE = 'es_access';
 const LOGIN_PATH = '/__login';
 
